@@ -15,7 +15,7 @@ If you would like to also be a part of the Vue.js community, this page was meant
 ## Resources You Should Know About!
 
 ### The Community
-- [The Forum](http://forum.vuejs.org/) - THE best place to ask questions and get answers about Vue.js and its components.
+- [The Forum](http://forum.vuejs.org/) - The best place to ask questions and get answers about Vue.js and its components.
 - [Gitter Channel](https://gitter.im/vuejs/vue) -  A place for devs to meet and chat. You can ask questions here, but the forum is the better platform, since the discussions are threaded.
 - [Github](https://github.com/vuejs) - Report bugs or fork repositories to offer pull requests. Any contribution is greatly appreciated!  
 
