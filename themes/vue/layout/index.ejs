@@ -1,19 +1,19 @@
 <div id="hero">
   <div class="inner">
     <ul id="nav">
-      <li><a href="/guide/" class="nav-link">Guide</a></li>
+      <li><a href="/guide/" class="nav-link">도움말</a></li>
       <li><a href="/api/" class="nav-link">API</a></li>
-      <li><a href="/examples/" class="nav-link">Examples</a></li>
-      <li><a href="/blog" class="nav-link">Blog</a></li>
+      <li><a href="/examples/" class="nav-link">예제</a></li>
+      <li><a href="/blog" class="nav-link">블로그</a></li>
       <%- partial('partials/community_dropdown') %>
     </ul>
     <div id="logo-wrap">
       <img id="logo" src="/images/logo.png">
       <h1>Vue.js</h1>
     </div>
-    <p class="desc">Reactive Components for Modern Web Interfaces</p>
+    <p class="desc">모던 웹 인터페이스를 위한 웹 컴포넌트</p>
     <p class="buttons">
-      <a href="/guide/installation.html" class="button">Install v<%- theme.vue_version %></a>
+      <a href="/guide/installation.html" class="button">v<%- theme.vue_version %> 설치하기</a>
     </p>
     <ul id="social">
       <li><a href="https://twitter.com/vuejs" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @vuejs</a></li>
@@ -22,7 +22,7 @@
       <li id="donate">
         <span class="wrapper" style="width: 108px">
           <img src="/images/patreon.png">
-          <a href="/support-vuejs">Support Vue.js</a>
+          <a href="/support-vuejs">Supports Vue.js</a>
         </span>
       </li>
     </ul>
@@ -48,7 +48,7 @@
 </div>
 
 <div id="example">
-  <h2>10 Second Example</h2>
+  <h2>10 초 예제</h2>
   <div class="block">
     <figure class="highlight lang-html"><table><tbody><tr><td class="gutter"><pre>1
 2
@@ -73,7 +73,7 @@
 </pre></td><td class="code"><pre><span class="keyword">var</span> demo = <span class="keyword">new</span> Vue({
   el: <span class="string">'#demo'</span>,
   data: {
-    message: <span class="string">'Hello Vue.js!'</span>
+    message: <span class="string">'안녕 Vue.js!'</span>
   }
 })
 </pre></td></tr></tbody></table></figure>
@@ -90,7 +90,7 @@
     var demo = new Vue({
       el: '#demo',
       data: {
-        message: 'Hello Vue.js!'
+        message: '안녕 Vue.js!'
       }
     })
     </script>
@@ -99,43 +99,43 @@
 <div id="features">
   <div class="feats">
     <div class="feat">
-      <h2><span class="icon simple"></span>Simple</h2>
-      <p>Write some HTML, grab some JSON, create a Vue instance, that's it.</p>
+      <h2><span class="icon simple"></span>간결성</h2>
+      <p>HTML을 약간 작성하세요, JSON을 조금 가지고, Vue 인스턴스를 만드세요, 끝입니다.</p>
     </div>
     <div class="feat">
-      <h2><span class="icon powerful"></span>Reactive</h2>
-      <p>Expressions & computed properties with transparent dependency tracking.</p>
+      <h2><span class="icon powerful"></span>반응성</h2>
+      <p>표현식(expression) & 투명한 의존성을 가지는 계산된 속성(computed property)을 사용하세요.</p>
     </div>
     <div class="feat">
-      <h2><span class="icon composable"></span>Components</h2>
-      <p>Compose your application with decoupled, reusable components.</p>
+      <h2><span class="icon composable"></span>컴포넌트</h2>
+      <p>분리된, 재사용 가능한 컴포넌트로 앱을 구성하세요.</p>
     </div>
     <div class="feat">
-      <h2><span class="icon compact"></span>Compact</h2>
-      <p>~24kb min+gzip, no dependency.</p>
+      <h2><span class="icon compact"></span>경량화</h2>
+      <p>~24kb min+gzip, 의존성이 없습니다.</p>
     </div>
     <div class="feat">
-      <h2><span class="icon fast"></span>Fast</h2>
-      <p>Precise and efficient async batch DOM updates.</p>
+      <h2><span class="icon fast"></span>신속성</h2>
+      <p>정밀하고 효율적인 비동기 배치로 DOM을 업데이트합니다.</p>
     </div>
     <div class="feat">
-      <h2><span class="icon module"></span>Package Ready</h2>
-      <p>Install via NPM or Bower - leverage your favorite eco system!</p>
+      <h2><span class="icon module"></span>준비된 패키지</h2>
+      <p>NPM, Bower로 설치하세요 - 좋아하는 환경에서 작업하세요!</p>
     </div>
   </div>
 </div>
 <div id="why">
-  <h2>You should try it out if you like:</h2>
+  <h2>만약 다음 항목이 마음에 든다면 시도하세요!</h2>
   <ul>
-    <li>Extendable Data bindings</li>
-    <li>Plain JS object models</li>
-    <li>APIs that simply make sense</li>
-    <li>Building UIs by composing components</li>
-    <li>Mixing &amp; matching small libraries</li>
+    <li>확장 가능한 데이터 바인딩</li>
+    <li>순수한 자바스크립트 객체</li>
+    <li>간결하고 이치에 맞는 API</li>
+    <li>컴포넌트를 이용한 UI 구성</li>
+    <li>작은 라이브러리들과 함께 사용 가능</li>
   </ul>
 </div>
 <div id="footer">
-  <a class="start" href="/guide/index.html">Get Started</a>
+  <a class="start" href="/guide/index.html">시작하기</a>
   <p>Released under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a></p>
   <p>Copyright (c) <%- date(Date.now(), 'YYYY') %> <a href="http://evanyou.me" target="_blank">Evan You</a></p>
 </div>

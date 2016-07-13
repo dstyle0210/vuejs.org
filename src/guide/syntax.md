@@ -1,58 +1,59 @@
 ---
-title: Data Binding Syntax
+title: 데이터 바인딩 문법
 type: guide
 order: 4
 ---
 
-Vue.js uses a DOM-based templating implementation. This means that all Vue.js templates are essentially valid, parsable HTML enhanced with some special attributes. Keep that in mind, since this makes Vue templates fundamentally different from string-based templates.
+Vue.js는 DOM 기반 템플릿의 구현을 사용합니다. 이것은 모든 Vue.js 템플릿은 본질적으로 효과적이며, 특별한 속성에서 확장 된 HTML을 분석 할 수 있다는 것을 의미합니다. 또한 Vue 템플릿은 본질적으로 문자열 기반 템플릿과 다르다는 것을 잊지 말아야 합니다.
 
-## Interpolations
+## 보간(Interpolation)
 
-### Text
+### 문자열
 
-The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
-
-``` html
-<span>Message: {{ msg }}</span>
-```
-
-The mustache tag will be replaced with the value of the `msg` property on the corresponding data object. It will also be updated whenever the data object's `msg` property changes.
-
-You can also perform one-time interpolations that do not update on data change:
+데이터 바인딩의 가장 기본적인 형식은 "Mustache"구문(이중 중괄호)를 사용하는 텍스트 해석하는 것입니다:
 
 ``` html
-<span>This will never change: {{* msg }}</span>
+<span>메시지: {{ msg }}</span>
 ```
 
-### Raw HTML
+Mustache 태그는 해당 데이터 개체의 `msg` 속성 값으로 대체됩니다. 또한 데이터 객체의 `msg` 속성이 변경 될 때마다 업데이트됩니다.
 
-The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use triple mustaches:
+데이터의 갱신을 할 수 없는 한번(one-time)만 수행할 수도 있습니다:
+
+``` html
+<span>이것은 절대 변경되지 않습니다: {{* msg }}</span>
+```
+
+### 원시 HTML
+
+이중 중괄호 Mustache는 HTML이 아닌 일반 텍스트로 데이터를 해석합니다. 원시 HTML을 출력하기 위해서는 3배 중괄호 mustache을 사용해야합니다:
 
 ``` html
 <div>{{{ raw_html }}}</div>
 ```
 
-The contents are inserted as plain HTML - data bindings are ignored. If you need to reuse template pieces, you should use [partials](/api/#partial).
+콘텐츠는 플레인 HTML로 삽입 된 데이터 바인딩은 무시됩니다. 템플릿이 조각들이 재사용이 필요한 경우 [partials](/api/#partial)을 사용해야합니다.
 
-<p class="tip">Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use HTML interpolation on trusted content and **never** on user-provided content.</p>
+<p class="tip">web 사이트에서 동적으로 임의의 HTML을 렌더링하는 것은 [XSS 공격](https://en.wikipedia.org/wiki/Cross-site_scripting)에 쉽게 연결되어 버리기 때문에 매우 위험합니다. 신뢰할 수있는 컨텐츠 만 HTML 배포를 사용하십시오. 사용자가 제공 한 콘텐츠를 결코 사용해서는 안됩니다.</p>
 
-### Attributes
+### 속성
 
-Mustaches can also be used inside HTML attributes:
+Mustaches는 HTML 속성에 사용할 수 있습니다.
 
 ``` html
 <div id="item-{{ id }}"></div>
 ```
 
-Note that attribute interpolations are disallowed in Vue.js directives and special attributes. Don't worry, Vue.js will raise warnings for you when mustaches are used in wrong places.
+속성의 보간이 Vue.js 지시어와 특별한 속성에 허용되지 않는다는 점에 유의하십시오. 하지만 걱정하지 마세요, Vue.js는 Mustache가 잘못된 장소에서 사용되는 때 당신에게 경고를 하는 것입니다.
 
-## Binding Expressions
+## 바인딩 표현식
 
-The text we put inside mustache tags are called **binding expressions**. In Vue.js, a binding expression consists of a single JavaScript expression optionally followed by one or more filters.
+Mustache 태그 내부의 텍스트는 바인딩 표현식으로 불리고 있습니다. Vue.js에서 **바인딩 표현식**은 하나 이상의 필터를 가질 수있는 단일 JavaScript로 구성되어 있습니다.
 
-### JavaScript Expressions
 
-So far we've only been binding to simple property keys in our templates. But Vue.js actually supports the full power of JavaScript expressions inside data bindings:
+### 자바스크립트 표현식
+
+지금까지 우리는 템플릿의 간단한 속성 키 만 사용했습니다. 그러나 Vue.js는 실제로는 데이터 바인딩 내에서 JavaScript 표현식을 강력하게 지원합니다:
 
 ``` html
 {{ number + 1 }}
@@ -62,111 +63,110 @@ So far we've only been binding to simple property keys in our templates. But Vue
 {{ message.split('').reverse().join('') }}
 ```
 
-These expressions will be evaluated in the data scope of the owner Vue instance. One restriction is that each binding can only contain **one single expression**, so the following will **NOT** work:
+이러한 표현은 자신의 Vue 인스턴스 데이터 범위에서 계산됩니다. 각 바인딩은 **단일 표현식**만을 포함 할 수 있다는 제한이 있습니다. 그래서 다음은 **작동하지 않습니다**:
 
 ``` html
-<!-- this is a statement, not an expression: -->
+<!-- 이것은 대입식으로 표현식이 아닙니다: -->
 {{ var a = 1 }}
 
-<!-- flow control won't work either, use ternary expressions -->
+<!-- 흐름제어는 불가능합니다, 삼항연산자를 사용하세요 -->
 {{ if (ok) { return message } }}
 ```
 
-### Filters
+### 필터
 
-Vue.js allows you to append optional "filters" to the end of an expression, denoted by the "pipe" symbol:
+Vue.js는 표현식의 끝에 임의의 "필터"를 추가 할 수 있습니다. "파이프 ('|')"기호를 사용하면 됩니다:
 
 ``` html
 {{ message | capitalize }}
 ```
 
-Here we are "piping" the value of the `message` expression through the built-in `capitalize` filter, which is in fact just a JavaScript function that returns the capitalized value. Vue.js provides a number of built-in filters, and we will talk about how to write your own filters later.
+여기에서는 대문자 값을 반환 JavaScript 함수인 기본 제공하는 `capitalize` 필터를 통해 `message` 식의 값을 "파이프"하고 있습니다. Vue.js는 몇 가지 기본 필터를 제공합니다 나중에 자신의 필터를 만드는 방법에 대해 설명합니다.
 
-Note that the pipe syntax is not part of JavaScript syntax, therefore you cannot mix filters inside expressions; you can only append them at the end of an expression.
+파이프 구문은 JavaScript 구문의 일부가 아닌 점에 유의하십시오. 따라서 표현식 부분에 필터를 혼합 할 수 없습니다. 표현식의 끝에 만 추가 할 수 있습니다.
 
-Filters can be chained:
+여러개의 필터의 체이닝을 지원합니다:
 
 ``` html
 {{ message | filterA | filterB }}
 ```
 
-Filters can also take arguments:
+필터는 아규먼트를 가질 수 있습니다:
 
 ``` html
 {{ message | filterA 'arg1' arg2 }}
 ```
 
-The filter function always receives the expression's value as the first argument. Quoted arguments are interpreted as plain string, while un-quoted ones will be evaluated as expressions. Here, the plain string `'arg1'` will be passed into the filter as the second argument, and the value of expression `arg2` will be evaluated and passed in as the third argument.
+필터 함수는 항상 첫 번째 아규먼트로 표현식의 값을받습니다. 따옴표 등으로 감싸진 문자열은 표현식으로 평가되고, 인용된 인수는 일반 문자열로 해석됩니다. 여기에서는 일반 문자열 'arg1'는 두번째 아규먼트로 필터에 사용됩니다. 표현식 arg2 값은 실제 값으로 변경되어 세번째 아규먼트로 전달됩니다.
 
-## Directives
+## 지시어
 
-Directives are special attributes with the `v-` prefix. Directive attribute values are expected to be **binding expressions**, so the rules about JavaScript expressions and filters mentioned above apply here as well. A directive's job is to reactively apply special behavior to the DOM when the value of its expression changes. Let's review the example we saw in the introduction:
+지시어는 접두사 `v-`의 특별한 속성입니다. 지시문 속성 값은 **바인딩 표현식** 으로 예측되기 때문에 위에서 살펴본한 JavaScript 표현식 및 필터에 대한 규칙은 여기에서도 마찬가지로 적용됩니다. 지시어의 역할은 그 식의 값이 변경 될 때 DOM에 대해 반응하는 특수한 동작을 적용하는 것입니다. 서론에서 본 예제를 살펴 봅시다:
 
 ``` html
 <p v-if="greeting">Hello!</p>
 ```
 
-Here, the `v-if` directive would remove/insert the `<p>` element based on the truthiness of the value of the expression `greeting`.
+여기서 `v-if` 지시어는 표현식 greeting의 값이 true인지 여부에 따라 `<p>` 요소를 제거 또는 삽입합니다.
 
-### Arguments
+### 아규먼트
 
-Some directives can take an "argument", denoted by a colon after the directive name. For example, the `v-bind` directive is used to reactively update an HTML attribute:
+일부 지시어는 지시어 이름 뒤에 콜론 (:)으로 "아규먼트"를 가질 수 있습니다. 예를 들면, `v-bind` 지시어는 HTML 속성을 반응형으로 사용하는데 사용됩니다 :
 
 ``` html
 <a v-bind:href="url"></a>
 ```
 
-Here `href` is the argument, which tells the `v-bind` directive to bind the element's `href` attribute to the value of the expression `url`. You may have noticed this achieves the same result as an attribute interpolation using `{% raw %}href="{{url}}"{% endraw %}`: that is correct, and in fact, attribute interpolations are translated into `v-bind` bindings internally.
+여기서 `href`은 `v-bind` 지시어에 식 `url` 값과 요소의 `href` 속성을 바인딩하는 전달 인자입니다. 당신은 `{% raw %}href="{{url}}"{% endraw %}`를 사용하여 속성의 보간과 비슷한 결과가되는 것을 발견 할 수도 있습니다, 그것은 맞습니다. 실제로 속성의 보간은 내부에서 v-bind 바인딩에 변경되어 있습니다.
 
-Another example is the `v-on` directive, which listens to DOM events:
+다음의 예는 DOM 이벤트를 받는 `v-on` 지시어입니다:
 
 ``` html
 <a v-on:click="doSomething">
 ```
 
-Here the argument is the event name to listen to. We will talk about event handling in more detail too.
+여기서 인수는 DOM 이벤트를 받는 이벤트 이름입니다. 또한 이벤트 핸들링 대해서는 자세히 설명합니다.
 
-### Modifiers
+### 변경자
 
-Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the `.literal` modifier tells the directive to interpret its attribute value as a literal string rather than an expression:
+변경자(Modifier)는 점 (.)에 의해 표기 된 특별한 접미사에서 지시어가 어떤 특별한 방법으로 바인딩되어야한다는 것을 나타냅니다. 예를 들어, `.literal` 변경자에 속성 값이 표현식이 아닌 리터럴 문자열로 해석되도록 한다.
 
 ``` html
 <a v-bind:href.literal="/a/b/c"></a>
 ```
 
-Of course, this seems pointless because we can just do `href="/a/b/c"` instead of using a directive. The example here is just for demonstrating the syntax. We will see more practical uses of modifiers later.
+물론이 예는 지시어를 사용하는 대신 href = "a/b/c"로 쓸 수 때문에 무의미하게 생각합니다. 구문의 사용법을 보여주기 위해 예일 뿐입니다. 나중에 변경자의 실제적인 사용 방법을 확인합시다.
 
-## Shorthands
+## 짧게 사용하기
 
-The `v-` prefix serves as a visual cue for identifying Vue-specific attributes in your templates. This is useful when you are using Vue.js to apply dynamic behavior to some existing markup, but can feel verbose for some frequently used directives. At the same time, the need for the `v-` prefix becomes less important when you are building an [SPA](https://en.wikipedia.org/wiki/Single-page_application) where Vue.js manages every template. Therefore, Vue.js provides special shorthands for two of the most often used directives, `v-bind` and `v-on`:
-
-### `v-bind` Shorthand
+`v-` 접두사는 템플릿에서 Vue 고유의 특성을 찾을 수있는 시각적 단서입니다. 이것은 Vue.js를 사용하여 기존의 마크 업에 동적 행동을 적용 할 때는 유용하지만, 자주 사용되는 몇 가지 지시문에 대해서는 중복이라고 느껴집니다. 동시에 `v-` 접두사의 필요성은 Vue.js가 모든 템플릿을 관리하는 [SPA](https://en.wikipedia.org/wiki/Single-page_application)를 구축 할 때 덜 중요하게 됩니다. 따라서 Vue.js은 가장 자주 사용되는 지시어 `v-bind`와 `v-on` 두 가지에 대해 짧게 사용하는 방법를 제공합니다:
+### `v-bind` 짧게 사용하기
 
 ``` html
-<!-- full syntax -->
+<!-- 전체 문법 -->
 <a v-bind:href="url"></a>
 
-<!-- shorthand -->
+<!-- 짧게 사용하기 -->
 <a :href="url"></a>
 
-or
+또는
 
-<!-- full syntax -->
+<!-- 전체 문법 -->
 <button v-bind:disabled="someDynamicCondition">Button</button>
 
-<!-- shorthand -->
+<!-- 짧게 사용하기 -->
 <button :disabled="someDynamicCondition">Button</button>
 ```
 
 
-### `v-on` Shorthand
+### `v-on` 짧게 사용하기
 
 ``` html
-<!-- full syntax -->
+<!-- 전체 문법 -->
 <a v-on:click="doSomething"></a>
 
-<!-- shorthand -->
+<!-- 짧게 사용하기 -->
 <a @click="doSomething"></a>
 ```
 
-They may look a bit different from "valid" HTML, but all Vue.js supported browsers can parse it correctly, and they do not appear in the final rendered markup. The shorthand syntax is totally optional, but you will likely appreciate it when you learn more about its usage later.
+이러한 짧은 사용 방법은 "유효"한 HTML과 약간 다르게 보일 수도 있지만, Vue.js는 모든 브라우저를 제대로 지원하고 최종 렌더링 된 마크업에 는 표시되게 하지 않습니다. 짧게 사용하는 것은 선택 사항이지만 나중에 자세한 사용 방법을 학습 할 때, 아마 소중하게 사용할 것입니다.

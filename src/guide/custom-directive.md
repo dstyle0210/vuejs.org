@@ -1,75 +1,76 @@
 ---
-title: Custom Directives
+title: 사용자 정의 지시어
 type: guide
 order: 14
 ---
 
-## Basics
+## 기초
 
-In addition to the default set of directives shipped in core, Vue.js also allows you to register custom directives. Custom directives provide a mechanism for mapping data changes to arbitrary DOM behavior.
+코어에서 제공하는 지시어의 외에 사용자 지정 지시어 (custom directive)을 등록 할 수 있습니다. 사용자 지정 지시어는 모든 DOM의 행동에 매핑 데이터를 변경하는 메커니즘을 제공합니다.
 
-You can register a global custom directive with the `Vue.directive(id, definition)` method, passing in a **directive id** followed by a **definition object**. You can also register a local custom directive by including it in a component's `directives` option.
+`Vue.directive(id, definition)` 메소드에서 **directive id**와 **definition object**를 계속 전달하여 전역으로 지시어를 등록 할 수 있습니다. 컴포넌트의 `directives` 옵션은 로컬 사용자 지정 지시어에 등록 할 수 있습니다.
 
-### Hook Functions
 
-A definition object can provide several hook functions (all optional):
+### 훅 함수
 
-- **bind**: called only once, when the directive is first bound to the element.
+definition object는 일부 훅 (모두 생략가능)을 제공합니다 :
 
-- **update**: called for the first time immediately after `bind` with the initial value, then again whenever the binding value changes. The new value and the previous value are provided as the argument.
+- **bind**: 지시문이 처음 대상 요소에 바인드할 때 한번만 호출됩니다.
 
-- **unbind**: called only once, when the directive is unbound from the element.
+- **update**: 처음 한 번은 `bind` 직후에 초기 값과 함께 호출되며, 이후 바인딩되는 값이 변경 될 때마다 호출됩니다. 아규먼트는 새로운 값과 이전 값이 전달됩니다.
 
-**Example**
+- **unbind**: 바인딩이 제거되는 시점에 한번만 호출됩니다.
+
+**예**
 
 ``` js
 Vue.directive('my-directive', {
   bind: function () {
-    // do preparation work
-    // e.g. add event listeners or expensive stuff
-    // that needs to be run only once
+    // 준비 작업을합니다
+    // e.g. 이벤트 리스너를 추가하거나 한 번만 수행해야하는 비용이 많이 드는 작업을 수행
   },
   update: function (newValue, oldValue) {
-    // do something based on the updated value
-    // this will also be called for the initial value
+    // 갱신된 값이 필요한 작업을 수행
+    // 이 부분은 초기화시에도 호출됩니다.
   },
   unbind: function () {
-    // do clean up work
-    // e.g. remove event listeners added in bind()
-  }
+    // 정리를위한 작업을 수행합니다
+    // e.g. bind()에서 추가 된 이벤트 리스너 제거
+    }
 })
 ```
 
-Once registered, you can use it in Vue.js templates like this (remember to add the `v-` prefix):
+일단 등록 된 후에는 다음과 같이 Vue.js 템플릿에서 사용할 수 있습니다 (`v-` 접두사를 추가하는 것을 잊지 마세요) :
 
 ``` html
 <div v-my-directive="someValue"></div>
 ```
 
-When you only need the `update` function, you can pass in a single function instead of the definition object:
+`update` 함수 만 필요한 경우 definition object 대신 함수를 하나 전달할 수 있습니다:
 
 ``` js
 Vue.directive('my-directive', function (value) {
-  // this function will be used as update()
+  // 이 함수는 업데이트시 호출됩니다
 })
 ```
 
-### Directive Instance Properties
+### 지시어 인스턴스 속성
 
 All the hook functions will be copied into the actual **directive object**, which you can access inside these functions as their `this` context. The directive object exposes some useful properties:
+모든 훅 함수는 실제로 **지시어 객체(directive object)**로 복사됩니다. 지시어 객체는 훅 함수 내부에서 `this` 컨텍스트로 접근할 수 있습니다. 이 지시문 객체는 몇 가지 유용한 속성을 가지고 있습니다:
 
-- **el**: the element the directive is bound to.
-- **vm**: the context ViewModel that owns this directive.
-- **expression**: the expression of the binding, excluding arguments and filters.
-- **arg**: the argument, if present.
-- **name**: the name of the directive, without the prefix.
-- **modifiers**: an object containing modifiers, if any.
-- **descriptor**: an object that contains the parsing result of the entire directive.
-- **params**: an object containing param attributes. [Explained below](#params).
+- **el**: 지시어가 바인딩할 엘리먼트.
+- **vm**: 이 지시어을 소유하는 ViewModel.
+- **expression**: 바인딩 표현식, 아규먼트와 필터는 포함히지 않습니다.
+- **arg**: 존재하는 경우, 아규먼트.
+- **name**: 지시어의 이름, 접두어를 사용하지 않습니다.
+- **modifiers**: 어떤 수식을 포함하는 객체.
+- **descriptor**: 전체 지시어의 분석을 포함하는 객체.
+- **params**: param 속성들을 가진 객체. [Explained below](#params).
 
-<p class="tip">You should treat all these properties as read-only and never modify them. You can attach custom properties to the directive object too, but be careful not to accidentally overwrite existing internal ones.</p>
+<p class="tip">이러한 모든 속성은 읽기 전용(read-only)으로 다루어져야 합니다. 사용자 정의 속성을 지시문 개체에 추가 할 수 있지만 의도하지 않고 기존의 내부 속성을 덮어 쓸 수 있으니 주의해야합니다.</p>
 
-An example of a custom directive using some of these properties:
+일부 속성을 사용하여 사용자 지정 지시어의 예:
 
 ``` html
 <div id="demo" v-demo:hello.a.b="msg"></div>
@@ -97,7 +98,7 @@ var demo = new Vue({
 })
 ```
 
-**Result**
+**결과**
 
 <div id="demo" v-demo:hello.a.b="msg"></div>
 <script>
@@ -122,9 +123,9 @@ var demo = new Vue({
 })
 </script>
 
-### Object Literals
+### 객체 리터럴
 
-If your directive needs multiple values, you can also pass in a JavaScript object literal. Remember, directives can take any valid JavaScript expression:
+지시어에 여러 값이 필요하면 JavaScript 객체 리터럴도 전달할 수 있습니다. 지시어가 어떤 JavaScript 표현식을 취할 수 있는 지 기억하십시오:
 
 ``` html
 <div v-demo="{ color: 'white', text: 'hello!' }"></div>
@@ -137,9 +138,9 @@ Vue.directive('demo', function (value) {
 })
 ```
 
-### Literal Modifier
+### 리터럴 변경자
 
-When a directive is used with the literal modifier, its attribute value will be interpreted as a plain string and passed directly into the `update` method. The `update` method will also be called only once, because a plain string cannot be reactive.
+지시어에 리터럴 변경자(literal modifier)가 사용될 때, 속성 값은 일반 문자열로 해석되고, 직접 `update` 메소드에 전달됩니다. `update` 메소드는 일반 문자열은 재 활성화 할 수 없기 때문에 한 번만 호출됩니다.
 
 ``` html
 <div v-demo.literal="foo bar baz">
@@ -150,44 +151,45 @@ Vue.directive('demo', function (value) {
 })
 ```
 
-### Element Directives
+### 엘리먼트 지시어
 
-In some cases, we may want our directive to be used in the form of a custom element rather than as an attribute. This is very similar to Angular's notion of "E" mode directives. Element directives provide a lighter-weight alternative to full-blown components (which are explained later in the guide). You can register a custom element directive like so:
+어떤 경우에는 속성으로보다 오히려 사용자 지정 엘리먼트 형태로 지시어를 사용하고 싶은 경우가 있습니다. 이것은 Angular "E"모드 지시어의 개념과 매우 유사합니다. 엘리먼트 지시어(element directive)는 가벼운 대안을 구성 요소로 제공합니다 (가이드의 뒷부분에 설명되어 있습니다). 사용자 지정 엘리먼트를 지시어처럼 등록 할 수 있습니다:
 
 ``` js
 Vue.elementDirective('my-directive', {
-  // same API as normal directives
+  // 표준 지시문과 같은 동일한 API
   bind: function () {
-    // manipulate this.el...
+    // this.el을 조작 ...
   }
 })
 ```
 
-Then, instead of:
+이 때, 다음 대신에:
 
 ``` html
 <div v-my-directive></div>
 ```
 
-We can write:
+이렇게 사용할 수 있습니다:
 
 ``` html
 <my-directive></my-directive>
 ```
 
-Element directives cannot accept arguments or expressions, but it can read the element's attributes to determine its behavior.
+엘리먼트 지시어는 아규먼트 또는 표현식을 처리할 수 없습니다. 그러나 그 행동을 결정하는 엘리먼트의 속성을 읽을 수 있습니다.
 
-A big difference from normal directives is that element directives are **terminal**, which means once Vue encounters an element directive, it will completely skip that element - only the element directive itself will be able to manipulate that element and its children.
+표준 지시어와의 큰 차이는 엘리먼트 지시어는 **마지막**에서 Vue 한 번 요소 지시어가 발생하는 것을 의미합니다. 엘리먼트와 그 자식을 남겨두고 엘리먼트 지시어 자체 엘리먼트와 그 자식을 조작 할 수 있습니다.
 
-## Advanced Options
+## 추가 옵션들
 
 ### params
 
-Custom directive can provide a `params` array, and the Vue compiler will automatically extract these attributes on the element that the directive is bound to. Example:
+사용자 지정 지시어는 `params` 배열을 제공 하며 Vue 컴파일러는 자동으로 바인딩 된 엘리먼트에서 해당 속성을 추출합니다. 예:
 
 ``` html
 <div v-example a="hi"></div>
 ```
+
 ``` js
 Vue.directive('example', {
   params: ['a'],
@@ -197,7 +199,7 @@ Vue.directive('example', {
 })
 ```
 
-This API also supports dynamic attributes. The `this.params[key]` value is automatically kept up-to-date. In addition, you can specify a callback when the value has changed:
+이 API는 동적 속성도 지원합니다. `this.params[key]` 값은 자동으로 최신 상태로 유지 됩니다. 또한, 값이 변경되었을 때 콜백을 지정할 수 있습니다 :
 
 ``` html
 <div v-example v-bind:a="someValue"></div>
@@ -213,11 +215,12 @@ Vue.directive('example', {
 })
 ```
 
-<p class="tip">Note that similar to props, directive params follow the same camelCase <=> kebab case mapping between JavaScript and HTML. For example, for a param used as `disable-effect` in the template, you need to access it as `disableEffect` in JavaScript.</p>
+<p class="tip">지시어 params는 JavaScript 및 HTML에서 동일 camelCase <=> kebab-case 매핑에 릅니다. props또한 같습니다. 예를 들어, 템플릿에서 `disable-effect`로 param을 사용하기 위해서는, JavaScript로 `disableEffect`으로 그것에 접근해야합니다.</p>
+
 
 ### deep
 
-If your custom directive is expected to be used on an Object, and it needs to trigger `update` when a nested property inside the object changes, you need to pass in `deep: true` in your directive definition.
+만약 사용자 지정 지시어에서 객체를 다루고 싶은 경우에, 객체의 내부에서 중첩 된 속성이 변경되었을 경우 `update`를 호출하려면 지시어에 `deep:true`를 전달해야합니다.
 
 ``` html
 <div v-my-directive="obj"></div>
@@ -227,25 +230,24 @@ If your custom directive is expected to be used on an Object, and it needs to tr
 Vue.directive('my-directive', {
   deep: true,
   update: function (obj) {
-    // will be called when nested properties in `obj`
-    // changes.
+    //`obj` 안에 중첩 된 속성이 변경된 때 호출된다
   }
 })
 ```
 
 ### twoWay
 
-If your directive expects to write data back to the Vue instance, you need to pass in `twoWay: true`. This option allows the use of `this.set(value)` inside the directive:
+당신의 지시어가 Vue 인스턴스에 데이터를 다시 보낼 경우 `twoWay:true`를 전달해야합니다. 이 옵션은 지시어 내부에서 `this.set(value)`를 사용할 수 있습니다:
 
 ``` js
 Vue.directive('example', {
   twoWay: true,
   bind: function () {
     this.handler = function () {
-      // set data back to the vm.
-      // If the directive is bound as v-example="a.b.c",
-      // this will attempt to set `vm.a.b.c` with the
-      // given value.
+      // vm에 데이터를 설정합니다
+      // 만약 지시어가 v-example="a.b.c" 로 바운드 되면,
+      // 주어진 값을 `vm.a.b.c`에
+      // 값을 설정하도록 시도합니다
       this.set(this.el.value)
     }.bind(this)
     this.el.addEventListener('input', this.handler)
@@ -258,7 +260,7 @@ Vue.directive('example', {
 
 ### acceptStatement
 
-Passing in `acceptStatement:true` enables your custom directive to accept inline statements like `v-on` does:
+`acceptStatement:true`를 사용자 정의 지시어에 전달하면 `v-on`와 같은 인라인 구문을 쓸 수 있습니다.
 
 ``` html
 <div v-my-directive="a++"></div>
@@ -268,14 +270,14 @@ Passing in `acceptStatement:true` enables your custom directive to accept inline
 Vue.directive('my-directive', {
   acceptStatement: true,
   update: function (fn) {
-    // the passed in value is a function which when called,
-    // will execute the "a++" statement in the owner vm's
-    // scope.
+    // 호출 될 때 전달 된 값은 함수입니다
+    // 함수 "a++" 구문을
+    // 소유자 vm 범위에서 실행합니다
   }
 })
 ```
 
-Use this wisely though, because in general you want to avoid side-effects in your templates.
+하지만 템플릿의 사이드 이펙트를 피하기 위해 현명하게 사용해야 합니다.
 
 ### terminal
 
@@ -283,7 +285,9 @@ Use this wisely though, because in general you want to avoid side-effects in you
 
 Vue compiles templates by recursively walking the DOM tree. However when it encounters a **terminal** directive, it will stop walking that element's children. The terminal directive takes over the job of compiling the element and its children. For example, `v-if` and `v-for` are both terminal directives.
 
-Writing a custom terminal directive is an advanced topic and requires decent knowledge of Vue's compilation pipeline, but it's possible. You can specify a custom terminal directive by specifying `terminal: true`. You will also likely need to use `Vue.FragmentFactory` for partial compilation. Here's an example of a custom terminal directive that compiles and "injects" its content template to another location on the page:
+Vue는 DOM 트리를 재귀적으로 순회하여 템플릿을 컴파일합니다. 그러나 컴파일 과정에서 **terminal** 지시어가 발견된 경우 요소의 자식을 순회하는 것을 중지합니다. terminal 지시어는 요소와 그 아이의 컴파일 작업을 수행합니다. 예를 들면, `v-if`와 `v-for`는 모두 터미널 지시어입니다.
+
+사용자 지정 지시어를 구현하는 것은 고급 주제이며, Vue 컴파일 파이프 라인의 지식이 필요하지만 터미널 지시어를 구현하는 것이 가능합니다. `terminal:true`를 지정하여 사용자 정의 터미널 지시문을 지정 할 수 있습니다. 또한 아마 부분적인 컴파일에 `Vue.Fragmentfactory`을 사용해야합니다. 여기에서는 컴파일 및 페이지의 다른 위치에 콘텐츠 템플릿을 "주입하는" 사용자 정의 터미널 지시어의 예입니다 :
 
 ``` js
 var FragmentFactory = Vue.FragmentFactory
@@ -318,10 +322,10 @@ Vue.directive('inject', {
 </div>
 ```
 
-If you want to write a custom terminal directive, it is recommend that you read through the source code of built-in terminal directives like `v-if` and `v-for` to get a better understanding of Vue internals.
+사용자 정의 터미널 지시어를 구현하고자하는 경우 Vue 내부의 더 나은 이해를 얻기 위해 `v-if`와 `v-for`와 같은 내장 터미널 지시어의 소스 코드를 읽는 것이 좋습니다.
 
 ### priority
 
-You can optionally provide a priority number for your directive. If no priority is specified, a default priority will be used - `1000` for normal directives and `2000` for terminal directives. A directive with a higher priority will be processed earlier than other directives on the same element. Directives with the same priority will be processed in the order they appear in the element's attribute list, although that order is not guaranteed to be consistent in different browsers.
+지시어에는 임의로 우선 순위 값 (기본값 1000)를 지정할 수 있습니다. 만약 우선 순위를 지정하지 않은 경우 기본 우선 순위가 사용됩니다. 일반 지시어는 `1000`, 그리고 터미널 지시어는 `2000`입니다. 같은 엘리먼트에 높은 우선 순위를 가진 지시어은 다른 지시어보다 빨리 처리됩니다. 같은 우선 순위를 가지는 지시어는 엘리먼트의 속성 목록에 나타나는 순서대로 처리되지만, 브라우저가 다를 일관된 순서를 가진다는 것은 보증되지 않습니다.
 
-You can checkout the priorities for some built-in directives in the [API reference](/api/#Directives). Additionally, flow control directives `v-if` and `v-for` always have the highest priority in the compilation process.
+일부 내장 지시어에 대한 우선 순위는 [API 문서](/api/#Directives)에서 확인할 수 있습니다. 또한 흐름 제어 지시문 `v-if`와 `v-for` 컴파일 과정에서 항상 가장 높은 우선 순위를 갖습니다.

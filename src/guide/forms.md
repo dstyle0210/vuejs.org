@@ -1,12 +1,12 @@
 ---
-title: Form Input Bindings
+title: 폼 입력 바인딩
 type: guide
 order: 10
 ---
 
-## Basics Usage
+## 기본 사용 방법
 
-You can use the `v-model` directive to create two-way data bindings on form input elements. It automatically picks the correct way to update the element based on the input type. Although a bit magical, `v-model` is essentially syntax sugar for updating data on user input events, plus special care for some edge cases.
+form의 input 요소에서 양방향(two-way) 데이터 바인딩을 만드려면 `v-model` 지시어를 사용할 수 있습니다. 자동으로 입력 된 데이터의 유형에 따라 요소를 업데이트합니다. 약간의 마법같기는 하지만, `v-model`은 본질적으로 사용자 입력 이벤트에서 데이터를 업데이트 하기 위한 신택스슈가(syntax sugar)이지만 일부 케이스에서 특별한 주의가 필요합니다.
 
 ### Text
 
@@ -33,7 +33,7 @@ new Vue({
 
 ### Checkbox
 
-Single checkbox, boolean value:
+단일 체크박스는 boolean 값입니다:
 
 ``` html
 <input type="checkbox" id="checkbox" v-model="checked">
@@ -54,7 +54,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Mutiple checkboxes, bound to the same Array:
+여러개의 체크박스는 배열과 같이 바인딩 됩니다.
 
 ``` html
 <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
@@ -131,7 +131,7 @@ new Vue({
 
 ### Select
 
-Single select:
+한개 선택:
 
 ``` html
 <select v-model="selected">
@@ -160,7 +160,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Multiple select (bound to Array):
+여러개 중 선택 (배열에 바인딩 됩니다):
 
 ``` html
 <select v-model="selected" multiple>
@@ -191,7 +191,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Dynamic options rendered with `v-for`:
+동적인 옵션들은 `v-for`로 렌더링 합니다:
 
 ``` html
 <select v-model="selected">
@@ -238,24 +238,24 @@ new Vue({
 </script>
 {% endraw %}
 
-## Value Bindings
+## 값 바인딩
 
-For radio, checkbox and select options, the `v-model` binding values are usually static strings (or booleans for checkbox):
+radio, checkbox, 그리고 select 옵션의 `v-model` 바인딩 값은 일반적으로 정적 문자열(또는 checkbox에는 boolean)를 지정합니다:
 
 ``` html
-<!-- `picked` is a string "a" when checked -->
+<!-- 체크되면 `picked`가 a의 값이 됩니다 -->
 <input type="radio" v-model="picked" value="a">
 
-<!-- `toggle` is either true or false -->
+<!-- `toggle`은 true 또는 false 값을 가집니다 -->
 <input type="checkbox" v-model="toggle">
 
-<!-- `selected` is a string "abc" when selected -->
+<!-- "abc"를 선택하는 경우 `selected`가 선택 값이 됩니다. -->
 <select v-model="selected">
   <option value="abc">ABC</option>
 </select>
 ```
 
-But sometimes we may want to bind the value to a dynamic property on the Vue instance. We can use `v-bind` to achieve that. In addition, using `v-bind` allows us to bind the input value to non-string values.
+그러나 때때로, 우리는 Vue 인스턴스에서 동적 속성에 값을 바인딩하고 싶을지도 모릅니다. 이를 위해 `v-bind`를 사용 할 수 있습니다. 게다가 `v-bind`를 사용하면 문자열이 아닌 값을 input 값을 바인딩합니다.
 
 ### Checkbox
 
@@ -268,9 +268,9 @@ But sometimes we may want to bind the value to a dynamic property on the Vue ins
 ```
 
 ``` js
-// when checked:
+// 체크되면:
 vm.toggle === vm.a
-// when unchecked:
+// 체크가 풀리면:
 vm.toggle === vm.b
 ```
 
@@ -281,7 +281,7 @@ vm.toggle === vm.b
 ```
 
 ``` js
-// when checked:
+// 체크되면:
 vm.pick === vm.a
 ```
 
@@ -289,31 +289,31 @@ vm.pick === vm.a
 
 ``` html
 <select v-model="selected">
-  <!-- inline object literal -->
+  <!-- 인라인 객체 리터럴 -->
   <option v-bind:value="{ number: 123 }">123</option>
 </select>
 ```
 
 ``` js
-// when selected:
+// 선택된 경우:
 typeof vm.selected // -> 'object'
 vm.selected.number // -> 123
 ```
 
-## Param Attributes
+## 매개변수 특성
 
 ### lazy
 
-By default, `v-model` syncs the input with the data after each `input` event. You can add a `lazy` attribute to change the behavior to sync after `change` events:
+기본적으로 `v-model`은 각 `input` 이벤트 후 데이터 입력을 동기화합니다. `change` 이벤트 후 동기화하기 위해 `lazy` 속성을 추가합니다:
 
 ``` html
-<!-- synced after "change" instead of "input" -->
+<!-- "input" 대신에 "change" 이벤트 후 변경됩니다. -->
 <input v-model="msg" lazy>
 ```
 
 ### number
 
-If you want user input to be automatically persisted as numbers, you can add a `number` attribute to your `v-model` managed inputs:
+사용자의 입력을 항상 숫자로 받기 위해 `number` 속성을 `v-model`이 관리하는 입력에 추가하세요.
 
 ``` html
 <input v-model="age" number>
@@ -321,7 +321,7 @@ If you want user input to be automatically persisted as numbers, you can add a `
 
 ### debounce
 
-The `debounce` param allows you to set a minimum delay after each keystroke before the input's value is synced to the model. This can be useful when you are performing expensive operations on each update, for example making an Ajax request for type-ahead autocompletion.
+`debounce` 매개 변수는 입력 값이 Model에 동기화되기 전에 각 키 입력 후 최소 지연 설정을 허용합니다. 예를 들어, 입력에 대한 자동 완성을 위한 Ajax 요청을 만드는 등의 부하가 큰 작업을 수행 할 때 유용합니다.
 
 ``` html
 <input v-model="msg" debounce="500">
@@ -339,4 +339,4 @@ new Vue({
 </script>
 {% endraw %}
 
-Note that the `debounce` param does not debounce the user's input events: it debounces the "write" operation to the underlying data. Therefore you should use `vm.$watch()` to react to data changes when using `debounce`. For debouncing real DOM events you should use the [debounce filter](/api/#debounce).
+`debounce` 매개 변수는 사용자 입력 이벤트를 `디바운스`하지 않는 점에 유의하십시오 : 이것은 기초가되는 데이터에 "쓰기"작업을 하는 경우에 사용합니다. 따라서 `debounce`를 사용하면 데이터 변경에 반응하기 위해 `vm.$watch()`를 사용해야합니다. 진짜 DOM 이벤트를 디바운스하기 위해서는 [debounce filter](/api/#debounce)를 사용합니다.

@@ -1,12 +1,12 @@
 ---
-title: Custom Filters
+title: 사용자 정의 필터
 type: guide
 order: 15
 ---
 
-## Basics
+## 기초
 
-Similar to custom directives, you can register a custom filter with the global `Vue.filter()` method, passing in a **filterID** and a **filter function**. The filter function takes a value as the argument and returns the transformed value:
+사용자 정의 지시어와 마찬가지로 글로벌 `Vue.filter()`를 사용하여 사용자 정의 필터를 등록 할 수 있습니다. 아규먼트는 `filterID`와 **filter function**을 전달합니다. 이 필터 함수는 아규먼트로 값을 받아 변환된 값을 반환합니다 :
 
 ``` js
 Vue.filter('reverse', function (value) {
@@ -19,7 +19,7 @@ Vue.filter('reverse', function (value) {
 <span v-text="message | reverse"></span>
 ```
 
-The filter function also receives any inline arguments:
+필터 함수는 인라인 아규먼트를 사용할 수 있습니다:
 
 ``` js
 Vue.filter('wrap', function (value, begin, end) {
@@ -32,19 +32,19 @@ Vue.filter('wrap', function (value, begin, end) {
 <span v-text="message | wrap 'before' 'after'"></span>
 ```
 
-## Two-way Filters
+## 양방향 필터
 
-Up till now we have used filters to transform values coming from the model and before displaying them in the view. But it is also possible to define a filter that transforms the value before it is written back to the model from the view (input elements):
+지금까지 필터는 모델에서 전달 된 값을 View에 표시되기 전에 변환하는 데 사용하고 있었습니다. 그러나 input 요소 등의 View에서 모델에 쓰기가 되기 전에 값을 변환하는 필터의 정의도 가능합니다.
 
 ``` js
 Vue.filter('currencyDisplay', {
   // model -> view
-  // formats the value when updating the input element.
+  // input 요소가 업데이트 될 때 값을 변환합니다.
   read: function(val) {
     return '$'+val.toFixed(2)
   },
   // view -> model
-  // formats the value when writing to the data.
+  // 데이터가 업데이트 될 때 값을 변환합니다.
   write: function(val, oldVal) {
     var number = +val.replace(/[^\d.]/g, '')
     return isNaN(number) ? 0 : parseFloat(number.toFixed(2))
@@ -80,9 +80,9 @@ new Vue({
 </script>
 {% endraw %}
 
-## Dynamic Arguments
+## 동적 아규먼트
 
-If a filter argument is not enclosed by quotes, it will be evaluated dynamically in the current vm's data context. In addition, the filter function is always invoked using the current vm as its `this` context. For example:
+만약 필터 아규먼트가 따옴표 ('')로 닫혀 있지 않은 경우, 현재 vm 데이터 컨텍스트에서 동적인 데이터로 다루어 집니다. 게다가 필터 함수에서 항상 현재 vm은 `this` 컨텍스트로 사용합니다. 예를 들면 :
 
 ``` html
 <input v-model="userInput">
@@ -91,11 +91,13 @@ If a filter argument is not enclosed by quotes, it will be evaluated dynamically
 
 ``` js
 Vue.filter('concat', function (value, input) {
-  // here `input` === `this.userInput`
+  // 여기서 `input` === `this.userInput`
   return value + input
 })
 ```
 
 For this simple example above, you can achieve the same result with just an expression, but for more complicated procedures that need more than one statement, you need to put them either in a computed property or a custom filter.
 
-The built-in `filterBy` and `orderBy` filters are both filters that perform non-trivial work on the Array being passed in and relies on the current state of the owner Vue instance.
+위의 간단한 예는 표현식을 그대로 사용 한 것과 같은 결과를 얻을 수 있습니다. 그러나 여러 문장이 필요한 복잡한 처리에서는 계산된 속성(Computed Property) 또는 사용자 정의 필터가 필요합니다.
+
+내장된 `filterBy`과 `orderBy` 필터는 함께 전달된 배열에 중요한 변경을 하며, 소유자의 Vue 인스턴스의 현재 상태에 의존 합니다.

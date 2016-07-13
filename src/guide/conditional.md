@@ -1,12 +1,12 @@
 ---
-title: Conditional Rendering
+title: 조건부 렌더링
 type: guide
 order: 7
 ---
 
 ## v-if
 
-In string templates, for example Handlebars, we would write a conditional block like this:
+Handlebars와 같이 `{}` 를 사용하는 템플릿은 조건이 있는 블럭은 아래처럼 사용합니다.
 
 ``` html
 <!-- Handlebars template -->
@@ -15,22 +15,22 @@ In string templates, for example Handlebars, we would write a conditional block 
 {{/if}}
 ```
 
-In Vue.js, we use the `v-if` directive to achieve the same:
+Vue.js는 `v-if` 지시어를 사용해서 동일하게 사용할 수 있습니다.
 
 ``` html
 <h1 v-if="ok">Yes</h1>
 ```
 
-It is also possible to add an "else" block with `v-else`:
+또한 "else"는 `v-else`로 사용할 수 있습니다.
 
 ``` html
 <h1 v-if="ok">Yes</h1>
 <h1 v-else>No</h1>
 ```
 
-## Template v-if
+## v-if 템플릿
 
-Because `v-if` is a directive, it has to be attached to a single element. But what if we want to toggle more than one element? In this case we can use `v-if` on a `<template>` element, which serves as an invisible wrapper. The final rendered result will not include the `<template>` element.
+`v-if` 는 지시어이기 때문에, 한 엘리먼트에만 사용할 수 있습니다. 한개 이상의 엘리먼트에 사용하려면 어떻게 해야할까요? `v-if`를 `<template>`에 사용해 안보이도록 할 수 있습니다. 마지막에 화면에 그릴때 `<template>`는 포함되지 않게 됩니다.
 
 ``` html
 <template v-if="ok">
@@ -42,19 +42,19 @@ Because `v-if` is a directive, it has to be attached to a single element. But wh
 
 ## v-show
 
-Another option for conditionally displaying an element is the `v-show` directive. The usage is largely the same:
+`v-show`는 조건부 렌더링을 위한 또 다른 방법입니다. 거의 동일한 방법으로 사용합니다.:
 
 ``` html
 <h1 v-show="ok">Hello!</h1>
 ```
 
-The difference is that an element with `v-show` will always be rendered and remain in the DOM; `v-show` simply toggles the `display` CSS property of the element.
+다른 점은 `v-show`를 가지는 엘리먼트는 실제로 DOM에 렌더링되는 것입니다; `v-show`는 단순히 `display` 엘리먼트의 CSS 속성을 토글합니다.
 
-Note that `v-show` doesn't support the `<template>` syntax.
+참고로, `v-show`는 `<template>`을 지원하지 않습니다.
 
 ## v-else
 
-You can use the `v-else` directive to indicate an "else block" for `v-if` or `v-show`:
+`v-if` 와 `v-show` 지시어를 사용하는 경우에 "else block"은 `v-else`를 이용합니다.
 
 ``` html
 <div v-if="Math.random() > 0.5">
@@ -65,33 +65,32 @@ You can use the `v-else` directive to indicate an "else block" for `v-if` or `v-
 </div>
 ```
 
-The `v-else` element must immediately follow the `v-if` or `v-show` element - otherwise it will not be recognized.
+`v-if` 와 `v-show`의 바로 뒤에 나오는 `v-else`만 작동합니다. 단독으로 사용할 수 없습니다.
 
+### 컴포넌트 사용시 주의
 
-### Component caveat
-
-When used with components and `v-show`, `v-else` doesn't get applied properly due to directives priorities. So instead of doing this:
+`v-show`, `v-else`를 컴포넌트에 사용하는 경우 동일한 컴포넌트이어야 합니다. 아래처럼 사용하는 대신에:
 
 ```html
 <custom-component v-show="condition"></custom-component>
 <p v-else>This could be a component too</p>
 ```
 
-Replace the `v-else` with another `v-show`:
+`v-else`를 또 다른 `v-show`로 변경합니다:
 
 ```html
 <custom-component v-show="condition"></custom-component>
 <p v-show="!condition">This could be a component too</p>
 ```
 
-It does work as intended with `v-if`.
+`v-if` 를 사용하는 경우와 동일하게 작동합니다.
 
 ## v-if vs. v-show
 
-When a `v-if` block is toggled, Vue.js will have to perform a partial compilation/teardown process, because the template content inside `v-if` can also contain data bindings or child components. `v-if` is "real" conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created during toggles.
+`v-if` 블록이 전환 될 때, Vue.js는 `v-if` 내부의 템플릿 콘텐츠도 데이터 바인딩 자식 요소를 포함 할 수 있기 때문에 부분적인 컴파일 및 teardown 작업을 수행해야합니다. `v-if`는 이벤트 리스너와 자식 컴퍼넌트 내부 조건 블록이 제대로 제거되고, 전환까지 다시 생성되기 때문에 "진짜" 조건부 렌더링입니다.
 
-`v-if` is also **lazy**: if the condition is false on initial render, it will not do anything - partial compilation won't start until the condition becomes true for the first time (and the compilation is subsequently cached).
+`v-if`는 **lazy**입니다. 초기 표시에서 false이면 아무것도하지 않습니다. 부분 컴파일 조건이 먼저 true 가 됩니다. (그리고 컴파일이 그 캐시 될 때까지)까지 시작되지 않습니다.
 
-In comparison, `v-show` is much simpler - the element is always compiled and preserved, with just simple CSS-based toggling.
+반면에 `v-show`는 매우 간결합니다. - 엘리먼트는 항상 컴파일된 간단한 CSS기반 토글로 저장됩니다.
 
-Generally speaking, `v-if` has higher toggle costs while `v-show` has higher initial render costs. So prefer `v-show` if you need to toggle something very often, and prefer `v-if` if the condition is unlikely to change at runtime.
+일반적으로, `v-if`는 높은 전환 비용을 가지고있는 반면 `v-show`는 높은 초기 렌더링 비용을 가집니다. 따라서 너무 자주 뭔가를 바꿀 필요가 있으면 `v-show`를 선택하고 조건이 실행될 때 변경하는 것이 거의 없는 경우는 `v-if`를 선택합니다.

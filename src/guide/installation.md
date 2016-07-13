@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: 설치하기
 type: guide
 order: 0
 vue_version: 1.0.26
@@ -8,55 +8,55 @@ min_size: "75.01"
 gz_size: "26.03"
 ---
 
-### Compatibility Note
+### 호환성에 대해
 
-Vue.js does **not** support IE8 and below, because Vue.js uses ECMAScript 5 features that are un-shimmable in IE8. However Vue.js supports all [ECMAScript 5 compliant browsers](http://caniuse.com/#feat=es5).
+Vue.js 는 IE8을 지원하지 않습니다. Vue.js는 IE8에서 지원하지 않는 ECMAScript 5의 기능들을 사용하고 있습니다. 그러나 Vue.js는 [ECMAScript 5를 지원하는 브라우저들](http://caniuse.com/#feat=es5)을 모두 지원합니다.
 
-### Release Notes
+### 릴리즈 노트
 
-Detailed release notes for each version are available on [GitHub](https://github.com/vuejs/vue/releases).
+각 버전에 대한 릴리즈 노트 정보는 [GitHub](https://github.com/vuejs/vue/releases)에서 볼 수 있습니다.
 
-## Standalone
+## 독립적으로 사용하기
 
-Simply download and include with a script tag. `Vue` will be registered as a global variable. **Pro tip: don't use the minified version during development. you will miss out all the nice warnings for common mistakes.**
+간단하게 다운로드 후 script 태그에 넣으면 됩니다. 그러면 `Vue`는 전역변수에 등록됩니다. **참고하세요 : 개발시 최소화된 버전을 사용하지 마세요 이 경우 실수에 따른 경고를 보지 못할 수 있습니다.**
 
 <div id="downloads">
-<a class="button" href="/js/vue.js" download>Development Version</a><span class="light info">With full warnings and debug mode</span>
+<a class="button" href="/js/vue.js" download>개발용 버전</a><span class="light info">모든 경고와 디버그 모드를 지원합니다.</span>
 
-<a class="button" href="/js/vue.min.js" download>Production Version</a><span class="light info">Warnings stripped, {{gz_size}}kb min+gzip</span>
+<a class="button" href="/js/vue.min.js" download>출시용 버전</a><span class="light info">경고를 출력하지 않습니다. {{gz_size}}kb min+gzip</span>
 </div>
 
 ### CDN
 
-Available on [jsdelivr](//cdn.jsdelivr.net/vue/{{vue_version}}/vue.min.js) or [cdnjs](//cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.min.js) (takes some time to sync so the latest version might not be available yet).
+[jsdelivr](//cdn.jsdelivr.net/vue/{{vue_version}}/vue.min.js) 또는 [cdnjs](//cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.min.js)에서 사용할 수 있습니다. (최신 버전이 적용되는데 약간의 시간이 걸릴 수 있습니다.)
 
-Also available on [npmcdn](https://npmcdn.com/vue/dist/vue.min.js), which will reflect the latest version as soon as it is published to npm. You can also browse the source of the npm package at [npmcdn.com/vue/](https://npmcdn.com/vue/).
+[npmcdn](https://npmcdn.com/vue/dist/vue.min.js)을 사용하면 가장 최신 버전을 받을 수 있습니다. 그리고 [npmcdn.com/vue/](https://npmcdn.com/vue/)에서 npm package 소스를 볼 수도 있습니다.
 
-### CSP-compliant build
+### 컨텐츠 보안 정책을 준수하는 빌드
 
-Some environments, such as Google Chrome Apps, enforces Content Security Policy (CSP) and does not allow the use of `new Function()` for evaluating expressions. In these cases you can use the [CSP-compliant build](https://github.com/vuejs/vue/tree/csp/dist) instead.
+구글 크롬 앱과 같은 일부 환경은 컨텐츠 보안 정책(CSP)를 강제하고 `new Function()` 와 같은 표현을 허용하지 않습니다. 이 경우 [CSP-준수 빌](https://github.com/vuejs/vue/tree/csp/dist)를 사용하세요.
 
 ## NPM
 
-NPM is the recommended installation method when building large scale apps with Vue.js. It pairs nicely with a CommonJS module bundler such as [Webpack](http://webpack.github.io/) or [Browserify](http://browserify.org/). Vue.js also provides accompanying tools for authoring [Single File Components](application.html#Single-File-Components).
+NPM을 통한 설치는 Vue.js를 사용하는 큰 규모의 앱을 만드는데 추천합니다. [Webpack](http://webpack.github.io/) 또는 [Browserify](http://browserify.org/) 등의 CommonJS 모듈 번들러와 잘 작동합니다. Vue.js는 [단일 파일 컴포넌트](application.html#Single-File-Components)를 지원하는 도구를 제공합니다.
 
 ``` bash
-# latest stable
+# 가장 최신 빌드
 $ npm install vue
-# latest stable + CSP-compliant
+# 가장 최신 빌드 + CSP-compliant
 $ npm install vue@csp
 ```
 
 ## CLI
 
-Vue.js provides an [official CLI](https://github.com/vuejs/vue-cli) for quickly scaffolding ambitious Single Page Applications. It provides battery-included build setups for a modern frontend workflow. It takes only a few minutes to get up and running with hot-reload, lint-on-save and production-ready builds:
+Vue.js는 [공식 CLI](https://github.com/vuejs/vue-cli)을 제공하여 빠르게 싱글 페이지 애플리케이션을 만들 수 있도록 합니다. 이는 최신의 프론트엔드 개발 방법을 위한 도구들을 제공합니다. 짧은 시간내에 실행되고 변경을 반영하며 저장시 정적 분석을 해주며 배포용 빌드를 해줍니다.
 
 ``` bash
-# install vue-cli
+# vue-cli 설치
 $ npm install -g vue-cli
-# create a new project using the "webpack" boilerplate
+# "webpack" 보일러플레이트를 이용한 프로젝트 생성
 $ vue init webpack my-project
-# install dependencies and go!
+# 의존성 설치 후 시작됩니다!
 $ cd my-project
 $ npm install
 $ npm run dev
@@ -64,7 +64,7 @@ $ npm run dev
 
 ## Dev Build
 
-**Important**: the CommonJS bundle distributed on NPM (`vue.common.js`) is only checked-in during releases on the `master` branch, so the file in the `dev` branch is the same as the stable release. To use Vue from the latest source code on GitHub, you will have to build it yourself!
+**중요**: NPM에서 제공하는 CommonJS 번들(`vue.common.js`)은 `master` 브랜치에서만 확인할 수 있습니다. 그리고 `dev` 브랜치의 파일은 안정된 버전과 동일합니다. 최신의 코드는 Github에 있습니다. 스스로 빌드 해서 사용해보세요!
 
 ``` bash
 git clone https://github.com/vuejs/vue.git node_modules/vue
@@ -76,10 +76,10 @@ npm run build
 ## Bower
 
 ``` bash
-# latest stable
+# 최신 안정화 버전 받기
 $ bower install vue
 ```
 
 ## AMD Module Loaders
 
-The standalone downloads or versions installed via Bower are wrapped with UMD so they can be used directly as an AMD module.
+독립 버전 또는 Bower를 이용한 버전은 UMD로 감싸져 있습니다. 그래서 AMD모듈로 직접 사용할 수 있습니다.

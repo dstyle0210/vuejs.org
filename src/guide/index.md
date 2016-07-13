@@ -1,12 +1,11 @@
 ---
-title: Getting Started
+title: 시작하기
 type: guide
 order: 1
 ---
 
-Let's start with a quick tour of Vue's data binding features. If you are more interested in a high-level overview first, check out this [blog post](http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/).
-
-The easiest way to try out Vue.js is using the [JSFiddle Hello World example](https://jsfiddle.net/yyx990803/okv0rgrk/). Feel free to open it in another tab and follow along as we go through some basic examples. If you prefer downloading / installing from a package manager, check out the [Installation](/guide/installation.html) page.
+빠르게 Vue의 데이터 바인딩 기능들을 살펴보겠습니다. 만약 더 간단한 개요를 보려면 이 [블로그 포스트](http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/)를 읽어보세요.
+가장 간단하게 Vue.js를 사용하려면 [JSFiddle Hello World example](https://jsfiddle.net/yyx990803/okv0rgrk/)을 보세요. 마음 편하게 다른 탭에 열고 기본적인 예제들을 따라해 보셔도 됩니다. 다운받거나 패키지매니저를 이용해서 설치하는 것을 더 선호하면 [설치하기](/guide/installation.html) 페이지를 읽어보세요.
 
 ### Hello World
 
@@ -37,7 +36,7 @@ new Vue({
 </script>
 {% endraw %}
 
-### Two-way Binding
+### 양방향 바인딩
 
 ``` html
 <div id="app">
@@ -68,7 +67,7 @@ new Vue({
 </script>
 {% endraw %}
 
-### Render a List
+### 리스트 출력하기
 
 ``` html
 <div id="app">
@@ -113,7 +112,7 @@ new Vue({
 </script>
 {% endraw %}
 
-### Handle User Input
+### 사용자 입력 다루기
 
 ``` html
 <div id="app">
@@ -154,7 +153,7 @@ new Vue({
 </script>
 {% endraw %}
 
-### All Together Now
+### 한번에 훑어보기
 
 ``` html
 <div id="app">
@@ -225,4 +224,4 @@ new Vue({
 </script>
 {% endraw %}
 
-I hope this gives you a basic idea of how Vue.js works. I'm sure you also have many questions now - read along, and we will cover them in the rest of the guide.
+Vue.js가 작동하는 기본적인 내용들을 알게 되었기를 바랍니다. 많은 질문들이 생겼을 겁니. 계속 읽어보세요 가이드의 남은 부분들이 궁금한 점들을 채워 줄 수 있습니다.

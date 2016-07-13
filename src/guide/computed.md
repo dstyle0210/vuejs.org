@@ -1,12 +1,12 @@
 ---
-title: Computed Properties
+title: 계산된 속성
 type: guide
 order: 5
 ---
 
-In-template expressions are very convenient, but they are really meant for simple operations only. Templates are meant to describe the structure of your view. Putting too much logic into your templates can make them bloated and hard to maintain. This is why Vue.js limits binding expressions to one expression only. For any logic that requires more than one expression, you should use a **computed property**.
+템플릿 표현식은 매우 유용합니다. 하지만 간단한 조작만 가능합니다. 여기서 템플릿은 당신의 뷰의 구조를 말합니다. 너무 많은 로직이 템플릿에 있게 되면 너무 커지게 되어 관리도 힘들게 됩니다. 이 때문에 Vue.js는 한번에 하나의 표현식만 바인딩 하도록 제한하였습니다. 한개 이상의 표현식이 필요한 경우에 반드시 **계산된 속성**을 사용해야 합니다.
 
-### Basic Example
+### 기본 예
 
 ``` html
 <div id="example">
@@ -21,16 +21,16 @@ var vm = new Vue({
     a: 1
   },
   computed: {
-    // a computed getter
+    // 계산된 게터
     b: function () {
-      // `this` points to the vm instance
+      // `this` 는 vm 객체를 말합니다
       return this.a + 1
     }
   }
 })
 ```
 
-Result:
+결과:
 
 {% raw %}
 <div id="example" class="demo">
@@ -51,7 +51,7 @@ var vm = new Vue({
 </script>
 {% endraw %}
 
-Here we have declared a computed property `b`. The function we provided will be used as the getter function for the property `vm.b`:
+`b`라는 계산된 속성을 선언했습니다. 게터 함수를 만들고 `vm.b` 와 같이 속성 처럼 이용할 수 있습니다:
 
 ``` js
 console.log(vm.b) // -> 2
@@ -59,13 +59,13 @@ vm.a = 2
 console.log(vm.b) // -> 3
 ```
 
-You can open the console and play with the example vm yourself. The value of `vm.b` is always dependent on the value of `vm.a`.
+콘솔에서 vm을 이용해서 테스트 해 볼 수 있습니다. `vm.b`의 값은 `vm.a`의 값에 의존적입니다
 
-You can data-bind to computed properties in templates just like a normal property. Vue is aware that `vm.b` depends on `vm.a`, so it will update any bindings that depends on `vm.b` when `vm.a` changes. And the best part is that we've created this dependency relationship declaratively: the computed getter function is pure and has no side effects, which makes it easy to test and reason about.
+계산된 속성을 템플릿에서 일반 속성과 동일한 방법으로 사용할 수 있습니다. Vue는 `vm.b`이 `vm.a`에 의존하는 것을 알고 있습니다. 그래서 `vm.a`이 변경될 때 `vm.b`도 함께 변경됩니다. 그리고 우리가 종속관계를 선언할 수 있는 것이 가장 중요한 부분입니다: 계산된 게터 메소드는 깔끔하고 사이드 이펙트도 없습니다. 이는 작성하고 테스트하기에 쉽게 만들어 줍니다.
 
-### Computed Property vs. $watch
+### 계산된 속성 vs. $watch
 
-Vue.js does provide an API method called `$watch` that allows you to observe data changes on a Vue instance. When you have some data that needs to change based on some other data, it is tempting to use `$watch` - especially if you are coming from an AngularJS background. However, it is often a better idea to use a computed property rather than an imperative `$watch` callback. Consider this example:
+Vue.js는  API 메소드 `$watch`가 Vue 객체의 데이터가 변경되는 것을 알아채도록 만들지 않았습니다. 만약 데이터가 다른 데이터에 변경됨에 따라 변경되는 것을 알아채야할 때 - 아마도 AngularJS를 아는 경우 `$watch`를 사용하고 싶어질 수 있습니다.  그러나 계산된 속성을 사용하는 것이 피할수 없는 `$watch` 콜백보다 좋은 아이디어 입니다. 다음 예제를 보세요.
 
 ``` html
 <div id="demo">{{fullName}}</div>
@@ -90,7 +90,7 @@ vm.$watch('lastName', function (val) {
 })
 ```
 
-The above code is imperative and repetitive. Compare it with a computed property version:
+위의 코드는 반복적이고 불필요합니다. 계산된 속성을 이용하는 버전을 보세요:
 
 ``` js
 var vm = new Vue({
@@ -106,11 +106,11 @@ var vm = new Vue({
 })
 ```
 
-Much better, isn't it?
+더 좋아보이지 않나요?
 
-### Computed Setter
+### 계산된 세터
 
-Computed properties are by default getter-only, but you can also provide a setter when you need it:
+계산된 속성은 게터만을 기본적으로 가지고 있습니다. 그러나 세터가 필요한 경우에 사용할 수 있습니다:
 
 ``` js
 // ...
@@ -130,7 +130,6 @@ computed: {
 }
 // ...
 ```
+이제 `vm.fullName = 'John Doe'`처럼 사용할 수 있습니다. 세터는 `vm.firstName`와 `vm.lastName`를 호출하여 갱신 합니다.
 
-Now when you call `vm.fullName = 'John Doe'`, the setter will be invoked and `vm.firstName` and `vm.lastName` will be updated accordingly.
-
-The technical details behind how computed properties are updated are [discussed in another section](reactivity.html#Inside-Computed-Properties) dedicated to the reactivity system.
+어떻게 계산된 속성이 갱신되는지에 대한 기술적인 자세한 부분들은 [discussed in another section](reactivity.html#Inside-Computed-Properties)를 읽어보세요.
