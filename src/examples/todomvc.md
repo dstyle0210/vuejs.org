@@ -4,7 +4,7 @@ type: examples
 order: 9
 ---
 
-> This is a fully spec-compliant TodoMVC implementation in under 120 effective lines of JavaScript (excluding comments and blank lines).
+> TodoMVC의 모든 기능을 120라인 이하(주석과 빈칸 제외)로 작성했습니다.
 
 <iframe width="100%" height="500" src="todomvc/index.html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
