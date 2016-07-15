@@ -4,9 +4,9 @@ type: guide
 order: 11
 ---
 
-Vue.js 트랜지션(Transition)시스템을 사용하면 DOM에서 요소를 검색하고 삭제하는 등의 트랜지션 효과를 자동으로 적용 할 수 있습니다. Vue.js은 자동으로 적절한 타이밍에 CSS 전환 또는 애니메이션을 트리거하기 위해 CSS 클래스를 추가하거나 삭제하고, 전환 동안 사용자 DOM 작업을하기 위해 JavaScript 훅 함수를 제공 할 수 있습니다.
+Vue.js 트랜지션(Transition)시스템을 사용하면 DOM에서 요소를 검색하고 삭제하는 등의 트랜지션 효과를 자동으로 적용 할 수 있습니다. Vue.js은 자동으로 적절한 타이밍에 CSS 트랜지션 또는 애니메이션을 트리거하기 위해 CSS 클래스를 추가하거나 삭제하고, 트랜지션 동안 사용자 DOM 작업을하기 위해 JavaScript 훅 함수를 제공 할 수 있습니다.
 
-전환 효과를 적용하기 위해 해당 요소에 특별한 `transition` 속성을 사용해야합니다:
+트랜지션 효과를 적용하기 위해 해당 요소에 특별한 `transition` 속성을 사용해야합니다:
 
 ``` html
 <div v-if="show" transition="my-transition"></div>
@@ -16,15 +16,15 @@ Vue.js 트랜지션(Transition)시스템을 사용하면 DOM에서 요소를 검
 
 - `v-if`
 - `v-show`
-- `v-for` (삽입 및 삭제에 대해서만 트리거 애니메이션 순서 변경은 [use vue-animated-list plugin](https://github.com/vuejs/vue-animated-list))
+- `v-for` (삽입 및 삭제에 대해서만 트리거 애니메이션 순서 변경은 [vue-animated-list plugin을 사용하세요](https://github.com/vuejs/vue-animated-list))
 - 동적 구성 요소 ([다음 섹션](components.html#Dynamic-Components)에서 소개)
 - 구성 요소의 루트 노드, 그리고 Vue 인스턴스 DOM 메소드 통한 트리거 (예 `vm.$appendTo(el)`)
 
-전환을 가지는 요소가 삽입 또는 삭제 될 때, Vue는 다음과 같습니다:
+트랜지션을 가지는 요소가 삽입 또는 삭제 될 때, Vue는 다음과 같습니다:
 
-1. "my-transition"의 ID를 사용하여 `Vue.transition(id, hooks)` 또는 `transitions` 옵션을 통해 등록된 JavaScript의 트랜지션 훅 객체를 찾습니다. 훅이 발견되면 여러 단계에서 적절한 훅를 부릅니다.
+1. "my-transition"의 ID를 사용하여 `Vue.transition(id, hooks)` 또는 `transitions` 옵션을 통해 등록된 JavaScript의 트랜지션 훅 객체를 찾습니다. 훅이 발견되면 여러 단계에서 적절한 훅를 호출합니다.
 
-2. 자동으로 해당 요소에 CSS 전환 또는 CSS 애니메이션이 적용되어 있는지 확인하고 적절한 타이밍에 CSS 클래스를 추가/삭제합니다.
+2. 자동으로 해당 요소에 CSS 트랜지션 또는 CSS 애니메이션이 적용되어 있는지 확인하고 적절한 타이밍에 CSS 클래스를 추가/삭제합니다.
 
 3. JavaScript 훅이 없고 CSS 트랜지션/애니메이션 아무것도 없는 경우, DOM 조작(삽입/삭제)는 다음 프레임에서 즉시 실행됩니다.
 
@@ -32,7 +32,7 @@ Vue.js 트랜지션(Transition)시스템을 사용하면 DOM에서 요소를 검
 
 ### 예
 
-기본적인 CSS 전환은 다음과 같이됩니다.
+기본적인 CSS 트랜지션은 다음과 같이됩니다.
 
 ``` html
 <div v-if="show" transition="expand">hello</div>
@@ -170,7 +170,7 @@ new Vue({
 
 2. `.fade-enter`는 entering transition (트랜지션에 들어있는)의 시작 상태를 정의합니다. 단일 프레임에 적용한 후 즉시 삭제됩니다.
 
-3. `.fade-leave`는 leaving transition(트랜지션 제거)의 종료 상태를 정의합니다. leaving transition이 시작할 때 적용되고 전환이 종료 할 때 삭제됩니다.
+3. `.fade-leave`는 leaving transition(트랜지션 제거)의 종료 상태를 정의합니다. leaving transition이 시작할 때 적용되고 트랜지션이 종료 할 때 삭제됩니다.
 
 `transition`이 값을 가지지 않는 경우 클래스는 기본적으로 `.v-transition`, `.v-enter` 그리고 `v-leave`됩니다.
 
@@ -179,7 +179,7 @@ new Vue({
 > New in 1.0.14
 > 1.0.14에서 새로 추가 되었습니다
 
-트랜지션 정의에서 사용자 정의 `enterClass`와 `leaveClass`을 지정할 수 있습니다. 이들은 기존의 클래스 이름을 덮어 씁니다. [Animate.css](https://daneden.github.io/animate.css/)의 예와 같은 이미 존재하는 CSS 애니메이션 라이브러리에서 Vue 전환 시스템에 결합하고 싶을 때는 유용합니다.
+트랜지션 정의에서 사용자 정의 `enterClass`와 `leaveClass`을 지정할 수 있습니다. 이들은 기존의 클래스 이름을 덮어 씁니다. [Animate.css](https://daneden.github.io/animate.css/)와 같이 이미 존재하는 CSS 애니메이션 라이브러리와 Vue 트랜지션 시스템을 함께 사용하고 싶을 때 유용합니다.
 
 ``` html
 <div v-show="ok" class="animated" transition="bounce">Watch me bounce</div>
@@ -200,7 +200,7 @@ Vue.js는 트랜지션이 종료 된 것을 알기 위해 이벤트 리스너에
 
 ``` js
 Vue.transition('bounce', {
-  // Vue는이 전환에 즉시
+  // Vue는이 트랜지션에 즉시
   //`animationend` 이벤트에만 신경을 쓸 수있게합니다
   type: 'animation'
 })
@@ -223,11 +223,11 @@ Vue.transition('bounce', {
 2. `v-enter` 클래스를 엘리먼트에 적용합니다.
 3. 그것을 DOM에 삽입합니다.
 4. `enter` 후크를 부릅니다.
-5. `v-enter`가 실제로 적용되도록 CSS 레이아웃을 강제 한 다음 요소를 원래 상태로 전환 되 돌리는를 트리거하기 위해 `v-enter` 클래스를 삭제합니다.
+5. `v-enter`가 실제로 적용되도록 CSS 레이아웃을 강제 한 다음 요소를 원래 상태로 트랜지션 되 돌리는를 트리거하기 위해 `v-enter` 클래스를 삭제합니다.
 6. 트랜지션이 끝날 때까지 기다립니다.
 7. `afterEnter` 후크를 부릅니다.
 
-또한, 만약 `enter` 트랜지션이 진행 중일 때 요소가 삭제되는 경우 `enterCancelled` 훅이 불립니다. 그리고 `enter`에서 타이머가 작성 될 수있는 기회를 제공합니다. 반대 인 leaving 전환도 마찬가지입니다.
+또한, 만약 `enter` 트랜지션이 진행 중일 때 요소가 삭제되는 경우 `enterCancelled` 훅이 불립니다. 이는 `enter`에서 타이머를 설정하거나 변경사항을 정리할 기회를 제공합니다. 반대 인 leaving 트랜지션도 마찬가지입니다.
 
 위와 같은 훅 함수 모두는 그 `this` 컨텍스트는 관련된 Vue 인스턴스를 설정하고 호출됩니다. 이것은 컴파일 범위의 동일한 규칙을 따릅니다. 트랜지션의 `this` 컨텍스트는 그것이 컴파일하는 범위를 나타내게됩니다.
 
@@ -384,11 +384,11 @@ new Vue({
 
 ## JavaScript 트랜지션
 
-어떠한 CSS도 정의하지 않고, JavaScript 훅을 사용할 수 있습니다. JavaScript 트랜지션만 이용하면 **`done` 콜백은 `enter`와 `leave` 훅을 위해 꼭 필요**하고, 그렇지 않으면 그들은 동기적으로 불리며, 그리고 전환은 즉시 종료합니다.
+어떠한 CSS도 정의하지 않고, JavaScript 훅을 사용할 수 있습니다. JavaScript 트랜지션만 이용하면 **`done` 콜백은 `enter`와 `leave` 훅을 위해 꼭 필요**하고, 그렇지 않으면 그들은 동기적으로 불리며, 그리고 트랜지션은 즉시 종료합니다.
 
 Vue.js는 CSS 감지를 건너 뛸 수 있기 때문에 JavaScript 트랜지션에 대해 명시적으로 `css : false`를 선언하는 것도 좋은 아이디어입니다. 이것은 트랜지션에 의한 간섭으로부터 방지합니다.
 
-다음 예제는 jQuery를 사용하여 사용자 정의 JavaScript 전환의 정의를 등록합니다 :
+다음 예제는 jQuery를 사용하여 사용자 정의 JavaScript 트랜지션의 정의를 등록합니다 :
 
 ``` js
 Vue.transition('fade', {
@@ -421,7 +421,7 @@ Vue.transition('fade', {
 
 ## 스태거링 트랜지션
 
-`v-for`에서 `transition`을 사용하면 스태거링 전환을 만들 수 있습니다. `stagger`, 또는 `enter-stagger`, 또는 `leave-stagger` 중 하나의 속성을 트랜지션 요소에 추가하여 이것을 할 수 있습니다 :
+`v-for`에서 `transition`을 사용하면 스태거링 트랜지션을 만들 수 있습니다. `stagger`, 또는 `enter-stagger`, 또는 `leave-stagger` 중 하나의 속성을 트랜지션 요소에 추가하여 이것을 할 수 있습니다 :
 ``` html
 <div v-for="item in list" transition="stagger" stagger="100"></div>
 ```

@@ -21,7 +21,7 @@ var vm = new Vue({
     a: 1
   },
   computed: {
-    // 계산된 게터
+    // 계산된 getter
     b: function () {
       // `this` 는 vm 객체를 말합니다
       return this.a + 1
@@ -51,7 +51,7 @@ var vm = new Vue({
 </script>
 {% endraw %}
 
-`b`라는 계산된 속성을 선언했습니다. 게터 함수를 만들고 `vm.b` 와 같이 속성 처럼 이용할 수 있습니다:
+`b`라는 계산된 속성을 선언했습니다. getter 함수를 만들고 `vm.b` 와 같이 속성 처럼 이용할 수 있습니다:
 
 ``` js
 console.log(vm.b) // -> 2
@@ -61,7 +61,7 @@ console.log(vm.b) // -> 3
 
 콘솔에서 vm을 이용해서 테스트 해 볼 수 있습니다. `vm.b`의 값은 `vm.a`의 값에 의존적입니다
 
-계산된 속성을 템플릿에서 일반 속성과 동일한 방법으로 사용할 수 있습니다. Vue는 `vm.b`이 `vm.a`에 의존하는 것을 알고 있습니다. 그래서 `vm.a`이 변경될 때 `vm.b`도 함께 변경됩니다. 그리고 우리가 종속관계를 선언할 수 있는 것이 가장 중요한 부분입니다: 계산된 게터 메소드는 깔끔하고 사이드 이펙트도 없습니다. 이는 작성하고 테스트하기에 쉽게 만들어 줍니다.
+계산된 속성을 템플릿에서 일반 속성과 동일한 방법으로 사용할 수 있습니다. Vue는 `vm.b`이 `vm.a`에 의존하는 것을 알고 있습니다. 그래서 `vm.a`이 변경될 때 `vm.b`도 함께 변경됩니다. 그리고 종속관계를 선언할 수 있는 것이 가장 중요한 부분입니다: 계산된 getter 메소드는 깔끔하고 사이드 이펙트도 없습니다. 이는 작성하고 테스트하기에 쉽게 만들어 줍니다.
 
 ### 계산된 속성 vs. $watch
 
@@ -108,9 +108,9 @@ var vm = new Vue({
 
 더 좋아보이지 않나요?
 
-### 계산된 세터
+### 계산된 setter
 
-계산된 속성은 게터만을 기본적으로 가지고 있습니다. 그러나 세터가 필요한 경우에 사용할 수 있습니다:
+계산된 속성은 getter만을 기본적으로 가지고 있습니다. 그러나 setter가 필요한 경우에 사용할 수 있습니다:
 
 ``` js
 // ...
@@ -130,6 +130,6 @@ computed: {
 }
 // ...
 ```
-이제 `vm.fullName = 'John Doe'`처럼 사용할 수 있습니다. 세터는 `vm.firstName`와 `vm.lastName`를 호출하여 갱신 합니다.
+이제 `vm.fullName = 'John Doe'`처럼 사용할 수 있습니다. setter는 `vm.firstName`와 `vm.lastName`를 호출하여 갱신 합니다.
 
-어떻게 계산된 속성이 갱신되는지에 대한 기술적인 자세한 부분들은 [discussed in another section](reactivity.html#Inside-Computed-Properties)를 읽어보세요.
+어떻게 계산된 속성이 갱신되는지에 대한 기술적인 자세한 부분들은 [다음 섹션](reactivity.html#Inside-Computed-Properties)를 읽어보세요.

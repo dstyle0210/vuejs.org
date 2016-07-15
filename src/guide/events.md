@@ -14,7 +14,6 @@ order: 9
 </div>
 ```
 
-We are binding a click event listener to a method named `greet`. Here's how to define that method in our Vue instance:
 우리는 greet라는 이름의 메소드에 click 이벤트 리스너를 바인딩합니다. Vue 인스턴스안에 메소드를 정의하는 방법은 다음과 같습니다:
 
 ``` js
@@ -105,7 +104,7 @@ new Vue({
 
 인라인 표현식의 제한과 마찬가지로 이벤트 핸들러는 **한 문장으로 제한**됩니다.
 
-때때로, 우리는 인라인 구문 핸들러에서 원래의 DOM 이벤트에 액세스해야합니다. `$event` 변수를 사용하여 메소드에 그것을 전달할 수 있습니다:
+때때로, 우리는 인라인 구문 핸들러를 이용해 DOM 이벤트에 액세스해야합니다. `$event` 변수를 사용하여 메소드에 그것을 전달할 수 있습니다:
 
 ``` html
 <button v-on:click="say('hello!', $event)">Submit</button>
@@ -190,7 +189,7 @@ To address this problem, Vue.js provides two **event modifiers** for `v-on`: `.p
 **1.0.17+:** 또한 사용자 임의의 키 한정자에 대한 별칭을 정의할 수 있습니다:
 
 ``` js
-// enable @keyup.f1
+// @keyup.f1 이 가능합니다
 Vue.directive('on').keyCodes.f1 = 112
 ```
 

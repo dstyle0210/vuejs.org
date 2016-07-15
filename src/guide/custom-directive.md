@@ -6,14 +6,14 @@ order: 14
 
 ## 기초
 
-코어에서 제공하는 지시어의 외에 사용자 지정 지시어 (custom directive)을 등록 할 수 있습니다. 사용자 지정 지시어는 모든 DOM의 행동에 매핑 데이터를 변경하는 메커니즘을 제공합니다.
+코어에서 제공하는 지시어의 외에 사용자 정의 지시어 (custom directive)을 등록 할 수 있습니다. 사용자 정의 지시어는 모든 DOM의 행동에 매핑 데이터를 변경하는 메커니즘을 제공합니다.
 
-`Vue.directive(id, definition)` 메소드에서 **directive id**와 **definition object**를 계속 전달하여 전역으로 지시어를 등록 할 수 있습니다. 컴포넌트의 `directives` 옵션은 로컬 사용자 지정 지시어에 등록 할 수 있습니다.
+`Vue.directive(id, definition)` 메소드에서 **directive id**와 **정의 객체**를 계속 전달하여 전역으로 지시어를 등록 할 수 있습니다. 컴포넌트의 `directives` 옵션은 로컬 사용자 정의 지시어에 등록 할 수 있습니다.
 
 
 ### 훅 함수
 
-definition object는 일부 훅 (모두 생략가능)을 제공합니다 :
+정의 객체는 일부 훅 (모두 생략가능)을 제공합니다 :
 
 - **bind**: 지시문이 처음 대상 요소에 바인드할 때 한번만 호출됩니다.
 
@@ -46,7 +46,7 @@ Vue.directive('my-directive', {
 <div v-my-directive="someValue"></div>
 ```
 
-`update` 함수 만 필요한 경우 definition object 대신 함수를 하나 전달할 수 있습니다:
+`update` 함수 만 필요한 경우 정의 객체 대신 함수를 하나 전달할 수 있습니다:
 
 ``` js
 Vue.directive('my-directive', function (value) {
@@ -56,7 +56,6 @@ Vue.directive('my-directive', function (value) {
 
 ### 지시어 인스턴스 속성
 
-All the hook functions will be copied into the actual **directive object**, which you can access inside these functions as their `this` context. The directive object exposes some useful properties:
 모든 훅 함수는 실제로 **지시어 객체(directive object)**로 복사됩니다. 지시어 객체는 훅 함수 내부에서 `this` 컨텍스트로 접근할 수 있습니다. 이 지시문 객체는 몇 가지 유용한 속성을 가지고 있습니다:
 
 - **el**: 지시어가 바인딩할 엘리먼트.
@@ -70,7 +69,7 @@ All the hook functions will be copied into the actual **directive object**, whic
 
 <p class="tip">이러한 모든 속성은 읽기 전용(read-only)으로 다루어져야 합니다. 사용자 정의 속성을 지시문 개체에 추가 할 수 있지만 의도하지 않고 기존의 내부 속성을 덮어 쓸 수 있으니 주의해야합니다.</p>
 
-일부 속성을 사용하여 사용자 지정 지시어의 예:
+일부 속성을 사용하여 사용자 정의 지시어의 예:
 
 ``` html
 <div id="demo" v-demo:hello.a.b="msg"></div>
@@ -153,7 +152,7 @@ Vue.directive('demo', function (value) {
 
 ### 엘리먼트 지시어
 
-어떤 경우에는 속성으로보다 오히려 사용자 지정 엘리먼트 형태로 지시어를 사용하고 싶은 경우가 있습니다. 이것은 Angular "E"모드 지시어의 개념과 매우 유사합니다. 엘리먼트 지시어(element directive)는 가벼운 대안을 구성 요소로 제공합니다 (가이드의 뒷부분에 설명되어 있습니다). 사용자 지정 엘리먼트를 지시어처럼 등록 할 수 있습니다:
+어떤 경우에는 속성으로보다 오히려 사용자 정의 엘리먼트 형태로 지시어를 사용하고 싶은 경우가 있습니다. 이것은 Angular "E"모드 지시어의 개념과 매우 유사합니다. 엘리먼트 지시어(element directive)는 가벼운 대안을 구성 요소로 제공합니다 (가이드의 뒷부분에 설명되어 있습니다). 사용자 정의 엘리먼트를 지시어처럼 등록 할 수 있습니다:
 
 ``` js
 Vue.elementDirective('my-directive', {
@@ -184,7 +183,7 @@ Vue.elementDirective('my-directive', {
 
 ### params
 
-사용자 지정 지시어는 `params` 배열을 제공 하며 Vue 컴파일러는 자동으로 바인딩 된 엘리먼트에서 해당 속성을 추출합니다. 예:
+사용자 정의 지시어는 `params` 배열을 제공 하며 Vue 컴파일러는 자동으로 바인딩 된 엘리먼트에서 해당 속성을 추출합니다. 예:
 
 ``` html
 <div v-example a="hi"></div>
@@ -215,12 +214,12 @@ Vue.directive('example', {
 })
 ```
 
-<p class="tip">지시어 params는 JavaScript 및 HTML에서 동일 camelCase <=> kebab-case 매핑에 릅니다. props또한 같습니다. 예를 들어, 템플릿에서 `disable-effect`로 param을 사용하기 위해서는, JavaScript로 `disableEffect`으로 그것에 접근해야합니다.</p>
+<p class="tip">지시어 params는 JavaScript 및 HTML에서 동일 camelCase <=> kebab-case 매핑됩니다. props또한 같습니다. 예를 들어, 템플릿에서 `disable-effect`로 param을 사용하기 위해서는, JavaScript로 `disableEffect`으로 그것에 접근해야합니다.</p>
 
 
 ### deep
 
-만약 사용자 지정 지시어에서 객체를 다루고 싶은 경우에, 객체의 내부에서 중첩 된 속성이 변경되었을 경우 `update`를 호출하려면 지시어에 `deep:true`를 전달해야합니다.
+만약 사용자 정의 지시어에서 객체를 다루고 싶은 경우에, 객체의 내부에서 중첩 된 속성이 변경되었을 경우 `update`를 호출하려면 지시어에 `deep:true`를 전달해야합니다.
 
 ``` html
 <div v-my-directive="obj"></div>
@@ -283,11 +282,9 @@ Vue.directive('my-directive', {
 
 > 1.0.19+
 
-Vue compiles templates by recursively walking the DOM tree. However when it encounters a **terminal** directive, it will stop walking that element's children. The terminal directive takes over the job of compiling the element and its children. For example, `v-if` and `v-for` are both terminal directives.
-
 Vue는 DOM 트리를 재귀적으로 순회하여 템플릿을 컴파일합니다. 그러나 컴파일 과정에서 **terminal** 지시어가 발견된 경우 요소의 자식을 순회하는 것을 중지합니다. terminal 지시어는 요소와 그 아이의 컴파일 작업을 수행합니다. 예를 들면, `v-if`와 `v-for`는 모두 터미널 지시어입니다.
 
-사용자 지정 지시어를 구현하는 것은 고급 주제이며, Vue 컴파일 파이프 라인의 지식이 필요하지만 터미널 지시어를 구현하는 것이 가능합니다. `terminal:true`를 지정하여 사용자 정의 터미널 지시문을 지정 할 수 있습니다. 또한 아마 부분적인 컴파일에 `Vue.Fragmentfactory`을 사용해야합니다. 여기에서는 컴파일 및 페이지의 다른 위치에 콘텐츠 템플릿을 "주입하는" 사용자 정의 터미널 지시어의 예입니다 :
+사용자 정의 지시어를 구현하는 것은 고급 주제이며, Vue 컴파일 파이프 라인의 지식이 필요하지만 터미널 지시어를 구현하는 것이 가능합니다. `terminal:true`를 지정하여 사용자 정의 터미널 지시문을 지정 할 수 있습니다. 또한 아마 부분적인 컴파일에 `Vue.Fragmentfactory`을 사용해야합니다. 여기에서는 컴파일 및 페이지의 다른 위치에 콘텐츠 템플릿을 "주입하는" 사용자 정의 터미널 지시어의 예입니다 :
 
 ``` js
 var FragmentFactory = Vue.FragmentFactory

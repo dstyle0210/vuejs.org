@@ -8,13 +8,13 @@ order: 18
 
 Vue.js 코어 라이브러리는 View 계층에 집중되어 유연하게 설계되어 있으며, 모든 애플리케이션 수준의 아키텍처와 간섭하지 않습니다. 이것은 기존 프로젝트와 통합을 위한 좋을 수 있지만 처음부터 대규모 애플리케이션을 구축 할 경우 구축 경험이 적은 개발자에게 괴로운 문제가 될 수도 있습니다.
 
-Vue.js의 생태계는 Vue에서 대규모 단일 페이지 애플리케이션 (SPA : single page application)을 구축하는 방법에 대한 라이브러리 도구 세트를 제공합니다. 이 파트에서는 "프레임워크"같은 것을 도입하고 있지만, 어디 까지나 권장하는 방법에 이상은 아닙니다. 지금까지의 각 장에서 소개 한 방법도 이용하면 좋습니다.
+Vue.js의 생태계는 Vue에서 대규모 단일 페이지 애플리케이션 (SPA : single page application)을 구축하는 방법에 대한 라이브러리 도구 세트를 제공합니다. 이 파트에서는 "프레임워크"같은 것을 도입하려 하고 있지만, 어디까지나 권장하는 방법 이상은 아닙니다. 지금까지의 각 장에서 소개 한 방법도 이용하면 좋습니다.
 
 ## 모듈화
 
 대규모 프로젝트의 경우 코드를 정리하기 위해 모듈화된 빌드 시스템을 이용해야합니다. 권장하는 방법으로는 CommonJS 또는 ES6 모듈 형식으로 소스 코드를 쓰고 [Webpack](http://webpack.github.io/) 또는 [Browserify](http://browserify.org/)를 사용하여 작업한 내역을 묶는 방법입니다.
 
-Webpack과 Browserify는 단순한 모듈 번들러 이상의 기능을 가지고 있습니다. 이들은 다른 처리기에서 소스 코드를 변환 할 수있는 소스 변환 API를 제공합니다. 예를 들어, [babel-loader](https://github.com/babel/babel-loader) 또는 [babelify](https://github.com/babel/babelify)을 사용하여 미래 지원되는 ES2015 / 2016 구문 코드를 작성할 수 있습니다.
+Webpack과 Browserify는 단순한 모듈 번들러 이상의 기능을 가지고 있습니다. 이들은 다른 처리기에서 소스 코드를 변환 할 수있는 소스 변환 API를 제공합니다. 예를 들어, [babel-loader](https://github.com/babel/babel-loader) 또는 [babelify](https://github.com/babel/babelify)을 사용하여 ES2015/2016 구문 코드를 작성할 수 있습니다.
 
 지금까지 이러한 모듈 번들러를 사용한 적이없는 경우에는 몇 가지 사용예를 통해 모듈 번들러의 개념을 습득 한 후 최신 ECMAScript 기능을 사용하여 쓰기 시작하는 것이 좋습니다.
 
@@ -68,7 +68,7 @@ app.currentView = 'page1'
 
 ## 서버와의 통신
 
-모든 Vue 인스턴스는 `JSON.stringify()`에서 직접 직렬화되는 원시 `$data`를 가질 수 있습니다. 추가적인 노력을 할 필요 없습니다. Vue.js 커뮤니티 [vue-resource](https://github.com/vuejs/vue-resource) 플러그인에 기여하고, RESTFul API에서 작동하는 간단한 방법을 제공합니다. 예를 들어 jQuery의 `$.ajax` 또는 [SuperAgent](https://github.com/visionmedia/superagent) 등 좋아하는 Ajax 라이브러리도 사용할 수 있습니다. Vue.js는 백엔드가없는 Firebase, Parse 그리고 Hoodie 등의 서비스와의 연계에도 적합합니다.
+모든 Vue 인스턴스는 `JSON.stringify()`에서 직접 직렬화되는 원시 `$data`를 가질 수 있습니다. 추가적인 노력을 할 필요 없습니다. Vue.js는 커뮤니티 [vue-resource](https://github.com/vuejs/vue-resource) 플러그인을 제공하여 RESTFul API를 사용하는 간단한 방법을 제공합니다. 예를 들어 jQuery의 `$.ajax` 또는 [SuperAgent](https://github.com/visionmedia/superagent) 등 좋아하는 Ajax 라이브러리도 사용할 수 있습니다. Vue.js는 백엔드가없는 Firebase, Parse 그리고 Hoodie 등의 서비스와의 연계에도 적합합니다.
 
 ## 상태 관리
 
@@ -76,7 +76,7 @@ app.currentView = 'page1'
 
 ``` js
 var sourceOfTruth = {}
-ㄱ
+
 var vmA = new Vue({
   data: sourceOfTruth
 })
@@ -179,7 +179,6 @@ describe('my-component', function () {
 })
 ```
 
-There are example Karma configurations for both [Webpack](https://github.com/vuejs/vue-loader-example/blob/master/build/karma.conf.js) and [Browserify](https://github.com/vuejs/vueify-example/blob/master/karma.conf.js).
 [Webpack](https://github.com/vuejs/vue-loader-example/blob/master/build/karma.conf.js)과 [Browserify](https://github.com/vuejs/vueify-example/blob/master/karma.conf.js)를 이용한 Karma 설정을 확인하세요.
 
 <p class="tip">Vue.js 지시어는 비동기적으로 데이터 업데이트에 반응하므로 데이터가 업데이트 된 DOM 상태에 대해 assert하려면 `Vue.nextTick` 콜백을 이용해야합니다.</p>

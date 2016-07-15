@@ -33,7 +33,7 @@ var component = new Component() // -> "hello from mixin!"
 
 ## 옵션 병합
 
-믹스 인과 컴포넌트 자체의 옵션과 중복일 때, 그들은 적절한 전략을 사용하여 "병합"됩니다. 예를 들어, 같은 이름을 가지는 훅 함수를 한 배열에 병합합니다. 또한, 믹스인을 이용한 훅은 컴포넌트자신의 훅 *이전*에 호출됩니다 :
+믹스 인과 컴포넌트 자체의 옵션과 중복일 때, 그들은 적절한 전략을 사용하여 "병합"됩니다. 예를 들어, 같은 이름을 가지는 훅 함수를 한 배열에 병합합니다. 또한, 믹스인을 이용한 훅은 컴포넌트 자신의 훅 **이전**에 호출됩니다 :
 
 ``` js
 var mixin = {
@@ -110,7 +110,7 @@ new Vue({
 
 ## 사용자 정의 옵션의 병합 전략
 
-사용자 지정 옵션이 병합 될 때, 그들은 단순히 기존 값을 덮어 씁니다. 사용자 지정 논리를 사용하여 사용자 지정 옵션을 병합하는 경우 `Vue.config.optionMergeStrategies`를 첨부해야합니다 :
+사용자 지정 옵션이 병합 될 때, 기존 값을 덮어 씁니다. 사용자 지정 옵션을 병합하는 경우 `Vue.config.optionMergeStrategies`를 첨부해야합니다 :
 
 ``` js
 Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {

@@ -96,8 +96,6 @@ Vue.filter('concat', function (value, input) {
 })
 ```
 
-For this simple example above, you can achieve the same result with just an expression, but for more complicated procedures that need more than one statement, you need to put them either in a computed property or a custom filter.
-
 위의 간단한 예는 표현식을 그대로 사용 한 것과 같은 결과를 얻을 수 있습니다. 그러나 여러 문장이 필요한 복잡한 처리에서는 계산된 속성(Computed Property) 또는 사용자 정의 필터가 필요합니다.
 
 내장된 `filterBy`과 `orderBy` 필터는 함께 전달된 배열에 중요한 변경을 하며, 소유자의 Vue 인스턴스의 현재 상태에 의존 합니다.

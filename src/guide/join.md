@@ -8,8 +8,6 @@ order: 20
 
 Vue.js의 커뮤니티의 활기는 지속적으로 성장하고 있습니다. 언제나 새로운 참여를 환영합니다. 실제로 성장하고있는 커뮤니티는 단지 사용만할 뿐이라도 노력을 투자할만한 건강한 오픈소스임을 보여주는 최고의 사인입니다.
 
-If you would like to also be a part of the Vue.js community, this page was meant to support your endeavors. Have a look at the resources listed below to get some orientation around the sailing ship of Vue.js and...
-
 Vue.js 커뮤니티의 참여자가 되고 싶다면 이 페이지는 당신의 노력을 지원하는 할 것입니다. Vue.js와 함께하기 위해 몇 가지 목록을 아래 보세요 그리고...
 
 ....환영합니다!
@@ -36,9 +34,3 @@ Vue.js 커뮤니티의 참여자가 되고 싶다면 이 페이지는 당신의 
   - [Vuex](https://github.com/vuejs/vuex) - Flux에서 영감을 받은 Vue.js용 애플리케이션 아키텍처.
   - [Vue-router](https://github.com/vuejs/vue-router) - 단일 페이지 애플리케이션을 위한 라우터.
   - [Vue-resource](https://github.com/vuejs/vue-resource) - XMLHttpRequest 또는 JSONP를 사용하는 Web 요청의 생성 및 응답 처리를 위한 도구를 제공하는 플러그인.
-
-
-
-
-
-

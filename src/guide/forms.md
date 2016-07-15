@@ -191,7 +191,7 @@ new Vue({
 </script>
 {% endraw %}
 
-동적인 옵션들은 `v-for`로 렌더링 합니다:
+동적인 옵션들은 `v-for`를 이용합니다:
 
 ``` html
 <select v-model="selected">
@@ -313,7 +313,7 @@ vm.selected.number // -> 123
 
 ### number
 
-사용자의 입력을 항상 숫자로 받기 위해 `number` 속성을 `v-model`이 관리하는 입력에 추가하세요.
+사용자의 입력을 항상 숫자로 받기 위해 `number` 속성을 `v-model`이 관리하는 input에 추가하세요.
 
 ``` html
 <input v-model="age" number>
