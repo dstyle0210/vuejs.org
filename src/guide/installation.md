@@ -18,7 +18,9 @@ Vue.js 는 IE8을 지원하지 않습니다. Vue.js는 IE8에서 지원하지 �
 
 ## 독립적으로 사용하기
 
-간단하게 다운로드 후 script 태그에 넣으면 됩니다. 그러면 `Vue`는 전역변수에 등록됩니다. **참고하세요 : 개발시 최소화된 버전을 사용하지 마세요 이 경우 실수에 따른 경고를 보지 못할 수 있습니다.**
+간단하게 다운로드 후 script 태그에 넣으면 됩니다. 그러면 `Vue`는 전역변수에 등록됩니다.
+
+**참고하세요 : 개발시 최소화된 버전을 사용하지 마세요 이 경우 실수에 따른 경고를 보지 못할 수 있습니다.**
 
 <div id="downloads">
 <a class="button" href="/js/vue.js" download>개발용 버전</a><span class="light info">모든 경고와 디버그 모드를 지원합니다.</span>
@@ -34,11 +36,11 @@ Vue.js 는 IE8을 지원하지 않습니다. Vue.js는 IE8에서 지원하지 �
 
 ### 컨텐츠 보안 정책을 준수하는 빌드
 
-구글 크롬 앱과 같은 일부 환경은 컨텐츠 보안 정책(CSP)를 강제하고 `new Function()` 와 같은 표현을 허용하지 않습니다. 이 경우 [CSP-준수 빌](https://github.com/vuejs/vue/tree/csp/dist)를 사용하세요.
+구글 크롬 앱과 같은 일부 환경은 컨텐츠 보안 정책(CSP)를 강제하고 `new Function()` 와 같은 표현을 허용하지 않습니다. 이 경우 [CSP-준수 빌드](https://github.com/vuejs/vue/tree/csp/dist)를 사용하세요.
 
 ## NPM
 
-NPM을 통한 설치는 Vue.js를 사용하는 큰 규모의 앱을 만드는데 추천합니다. [Webpack](http://webpack.github.io/) 또는 [Browserify](http://browserify.org/) 등의 CommonJS 모듈 번들러와 잘 작동합니다. Vue.js는 [단일 파일 컴포넌트](application.html#Single-File-Components)를 지원하는 도구를 제공합니다.
+NPM을 통한 설치는 Vue.js를 사용하는 큰 규모의 앱을 만드는데 적합합니다. [Webpack](http://webpack.github.io/) 또는 [Browserify](http://browserify.org/) 등의 CommonJS 모듈 번들러와 잘 작동합니다. Vue.js는 [단일 파일 컴포넌트](application.html#Single-File-Components)를 지원하는 도구를 제공합니다.
 
 ``` bash
 # 가장 최신 빌드

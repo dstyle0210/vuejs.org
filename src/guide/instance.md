@@ -31,7 +31,7 @@ var MyComponent = Vue.extend({
 var myComponentInstance = new MyComponent()
 ```
 
-명령으로 확장 된 인스턴스를 만들 수 있지만 대부분의 경우 선언적으로 지정 요소로 컴포넌트 생성자를 등록하고 이를 템플릿에서 사용할 수 있습니다. 컴포넌트 시스템에 대해서는 나중에 자세히 설명합니다. 모든 Vue.js 컴포넌트는 본질적으로 확장 된 Vue 인스턴스임을 알고 있어야 합니다.
+명시적으로 확장 된 인스턴스를 만들 수 있지만 대부분의 경우 컴포넌트 생성자를 등록하고 이를 템플릿에서 사용할 수 있습니다. 컴포넌트 시스템에 대해서는 나중에 자세히 설명합니다. 모든 Vue.js 컴포넌트는 본질적으로 확장 된 Vue 인스턴스임을 알고 있어야 합니다.
 
 ## 속성과 메소드
 
@@ -67,9 +67,9 @@ var vm = new Vue({
 vm.$data === data // -> true
 vm.$el === document.getElementById('example') // -> true
 
-// $watch is an instance method
+// $watch 는 인스턴스 메소드입니다
 vm.$watch('a', function (newVal, oldVal) {
-  // this callback will be called when `vm.a` changes
+  // `vm.a`이 변경될 때 콜백이 호출됩니다
 })
 ```
 
