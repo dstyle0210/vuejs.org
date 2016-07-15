@@ -2,11 +2,11 @@
 type: api
 ---
 
-# 전역 설정
+## 전역 설정
 
 `Vue.config`은 Vue의 전역 설정을 가지고 있는 객체입니다. 아래에 있는 `Vue.config`의 속성들을 사용 전에 변경할 수 있습니다:
 
-## debug
+### debug
 
 - **자료형:** `Boolean`
 
@@ -26,7 +26,7 @@ type: api
 
   디버그 모드는 개발용 빌드에서만 사용할 수 있습니다.
 
-## delimiters
+### delimiters
 
 - **자료형:** `Array<String>`
 
@@ -41,7 +41,7 @@ type: api
 
   일반 텍스트 구분자(delimiter)를 변경합니다.
 
-## unsafeDelimiters
+### unsafeDelimiters
 
 - **자료형:** `Array<String>`
 
@@ -56,7 +56,7 @@ type: api
 
   원시 HTML을 출력하기 위한 구분자를 변경합니다.
 
-## silent
+### silent
 
 - **자료형:** `Boolean`
 
@@ -70,7 +70,7 @@ type: api
 
   모든 Vue.js의 로그와 경고를 나오지 않게 합니다.
 
-## async
+### async
 
 - **자료형:** `Boolean`
 
@@ -84,7 +84,7 @@ type: api
 
   비동기모드가 꺼진 상태에는 Vue는 데이터 변경시 모든 DOM 갱신을 동기적으로 처리합니다. 일부 시나리오에서 디버깅에 도움이 됩니다. 하지만 성능을 떨어뜨리고 콜백을 처리하는 watcher에 영향을 줄 수 있습니다. **배포 시 `async : false`는 추천하지 않습니다.**
 
-## devtools
+### devtools
 
 - **자료형:** `Boolean`
 
@@ -99,9 +99,9 @@ type: api
 
   [vue-devtools](https://github.com/vuejs/vue-devtools) 사용을 가능하게 합니다. 개발용 빌드는 `true`, 배포용 빌드는 `false`가 기본값입니다. 배포용 빌드에서 `true`로 사용할 수도 있습니다.
 
-# 전역 API
+## 전역 API
 
-## Vue.extend( options )
+### Vue.extend( options )
 
 - **전달인자:**
 
@@ -142,7 +142,7 @@ type: api
 
 - **참고하세요:** [컴포넌트](/guide/components.html)
 
-## Vue.nextTick( callback )
+### Vue.nextTick( callback )
 
 - **전달인자:**
 
@@ -163,7 +163,7 @@ type: api
 
 - **참고하세요:** [비동기 업데이트 큐](/guide/reactivity.html#Async-Update-Queue)
 
-## Vue.set( object, key, value )
+### Vue.set( object, key, value )
 
 - **전달인자:**
 
@@ -179,7 +179,7 @@ type: api
 
 - **참고하세요:** [반응성에 대해 깊이 알기](/guide/reactivity.html)
 
-## Vue.delete( object, key )
+### Vue.delete( object, key )
 
 - **전달인자:**
 
@@ -192,7 +192,7 @@ type: api
 
 - **참고하세요:** [반응성에 대해 깊이 알기](/guide/reactivity.html)
 
-## Vue.directive( id, [definition] )
+### Vue.directive( id, [definition] )
 
 - **전달인자:**
 
@@ -222,7 +222,7 @@ type: api
 
 - **참고하세요:** [사용자 정의 지시어](/guide/custom-directive.html)
 
-## Vue.elementDirective( id, [definition] )
+### Vue.elementDirective( id, [definition] )
 
 - **전달인자:**
 
@@ -241,13 +241,13 @@ type: api
     unbind: function () {}
   })
 
-  // 게터, 등록되어 있으면 지시문 정의를 반환합니다
+  // getter, 등록되어 있으면 지시문 정의를 반환합니다
   var myDirective = Vue.elementDirective('my-element')
   ```
 
 - **참고하세요:** [엘리먼트 지시어](/guide/custom-directive.html#Element-Directives)
 
-## Vue.filter( id, [definition] )
+### Vue.filter( id, [definition] )
 
 - **전달인자:**
 
@@ -270,13 +270,13 @@ type: api
     write: function () {}
   })
 
-  // 게터, 등록 되어있으면 반환합니다
+  // getter, 등록 되어있으면 반환합니다
   var myFilter = Vue.filter('my-filter')
   ```
 
 - **참고하세요:** [사용자 정의 필터](/guide/custom-filter.html)
 
-## Vue.component( id, [definition] )
+### Vue.component( id, [definition] )
 
 - **전달인자:**
 
@@ -300,7 +300,7 @@ type: api
 
 - **참고하세요:** [컴포넌트](/guide/components.html).
 
-## Vue.transition( id, [hooks] )
+### Vue.transition( id, [hooks] )
 
 - **전달인자:**
 
@@ -324,7 +324,7 @@ type: api
 
 - **참고하세요:** [트랜지션](/guide/transitions.html).
 
-## Vue.partial( id, [partial] )
+### Vue.partial( id, [partial] )
 
 - **전달인자:**
 
@@ -345,7 +345,7 @@ type: api
 
 - **참고하세요:** [특수 엘리먼트 - partial](#partial)
 
-## Vue.use( plugin, [options] )
+### Vue.use( plugin, [options] )
 
 - **전달인자:**
 
@@ -358,7 +358,7 @@ type: api
 
 - **참고하세요:** [플러그인](/guide/plugins.html).
 
-## Vue.mixin( mixin )
+### Vue.mixin( mixin )
 
 - **전달인자:**
 
@@ -370,9 +370,9 @@ type: api
 
 - **참고하세요:** [Global Mixins](/guide/mixins.html#Global-Mixin)
 
-# 옵션들 / 데이터
+## 옵션 / 데이터
 
-## data
+### data
 
 - **자료형:** `Object | Function`
 
@@ -380,7 +380,7 @@ type: api
 
 - **상세:**
 
-  Vue 인스턴스에 대한 데이터 객체입니다. Vue.js는 재귀적으로 인스턴스의 속성을 게터/세터를 "반응형"으로 만듭니다. **객체는 일반 네이티브 객체이어야합니다.** 기존의 게터/세터 및 프로토타입 속성은 무시됩니다. 복잡한 개체를 모니터링하는 것은 권장되지 않습니다.
+  Vue 인스턴스에 대한 데이터 객체입니다. Vue.js는 재귀적으로 인스턴스의 속성을 getter/setter를 "반응형"으로 만듭니다. **객체는 일반 네이티브 객체이어야합니다.** 기존의 getter/setter 및 프로토타입 속성은 무시됩니다. 복잡한 개체를 모니터링하는 것은 권장되지 않습니다.
 
   일단 인스턴스가 생성되면 원시 데이터 객체는 `vm.$data`로 사용할 수 있습니다. Vue 인스턴스는 데이터 객체에서 발견된 모든 속성에 대신 액세스합니다.
 
@@ -412,7 +412,7 @@ type: api
 
 - **참고하세요:** [반응성에 대해 깊이 알기](/guide/reactivity.html).
 
-## props
+### props
 
 - **자료형:** `Array | Object`
 
@@ -446,7 +446,7 @@ type: api
 
 - **참고하세요:** [Props](/guide/components.html#Props)
 
-## propsData
+### propsData
 
 > 1.0.22+
 
@@ -473,13 +473,13 @@ type: api
   })
   ```
 
-## computed
+### computed
 
 - **자료형:** `Object`
 
 - **상세:**
 
-  Vue 인스턴스에 포함되는 계산된 속성(Computed property)입니다. 모든 게터 및 세터 자동으로 Vue 인스턴스에 바인딩 된 `this` 컨텍스트를가집니다.
+  Vue 인스턴스에 포함되는 계산된 속성(Computed property)입니다. 모든 getter 및 setter 자동으로 Vue 인스턴스에 바인딩 된 `this` 컨텍스트를가집니다.
 
 - **예제**
 
@@ -513,7 +513,7 @@ type: api
   - [계산된 속성](/guide/computed.html)
   - [반응성에 대해 깊이 알기: 계산된 속성 상세](/guide/reactivity.html#Inside-Computed-Properties)
 
-## methods
+### methods
 
 - **자료형:** `Object`
 
@@ -538,7 +538,7 @@ type: api
 
 - **참고하세요:** [메소드와 이벤트 핸들링](/guide/events.html)
 
-## watch
+### watch
 
 - **자료형:** `Object`
 
@@ -571,9 +571,9 @@ type: api
 
 - **참고하세요:** [인스턴스 메소드 - vm.$watch](#vm-watch)
 
-# 옵션 / DOM
+## 옵션 / DOM
 
-## el
+### el
 
 - **자료형:** `String | HTMLElement | Function`
 
@@ -589,7 +589,7 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-## template
+### template
 
 - **자료형:** `String`
 
@@ -607,7 +607,7 @@ type: api
   - [Slot과 컨텐츠 배포](/guide/components.html#Content-Distribution-with-Slots)
   - [인스턴트 파편화](/guide/components.html#Fragment-Instance)
 
-## replace
+### replace
 
 - **자료형:** `Boolean`
 
@@ -660,9 +660,9 @@ type: api
   </div>
   ```
 
-# 옵션 / 라이프사이클 훅
+## 옵션 / 라이프사이클 훅
 
-## init
+### init
 
 - **자료형:** `Function`
 
@@ -672,7 +672,7 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-## created
+### created
 
 - **자료형:** `Function`
 
@@ -682,7 +682,7 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-## beforeCompile
+### beforeCompile
 
 - **자료형:** `Function`
 
@@ -692,7 +692,7 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-## compiled
+### compiled
 
 - **자료형:** `Function`
 
@@ -702,7 +702,7 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-## ready
+### ready
 
 - **자료형:** `Function`
 
@@ -712,7 +712,7 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-## attached
+### attached
 
 - **자료형:** `Function`
 
@@ -720,7 +720,7 @@ type: api
 
   `vm.$el`이 지시문 또는 VM 인스턴스 또는 `$appendTo()`와 같은 VM 인스턴스의 메소드에 의해 DOM에 추가 된 때 호출됩니다. `vm.$el`을 직접 조작하면 이 훅이 호출되지 않습니다.
 
-## detached
+### detached
 
 - **자료형:** `Function`
 
@@ -728,7 +728,7 @@ type: api
 
   지시문 또는 VM 인스턴스의 메소드에 의해 DOM에서 `vm.$el`가 삭제 된 경우 호출됩니다. 지시어 `vm.$el`을 직접 조작하면 훅이 실행되지 않습니다.
 
-## beforeDestroy
+### beforeDestroy
 
 - **자료형:** `Function`
 
@@ -738,7 +738,7 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-## destroyed
+### destroyed
 
 - **자료형:** `Function`
 
@@ -750,9 +750,9 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-# Options / Assets
+## 옵션 / 에셋
 
-## directives
+### directives
 
 - **자료형:** `Object`
 
@@ -765,7 +765,7 @@ type: api
   - [사용자 정의 지시어](/guide/custom-directive.html)
   - [에셋 명명 규칙](/guide/components.html#Assets-Naming-Convention)
 
-## elementDirectives
+### elementDirectives
 
 - **자료형:** `Object`
 
@@ -778,7 +778,7 @@ type: api
   - [엘리먼트 지시어](/guide/custom-directive.html#Element-Directives)
   - [에셋 명명 규칙](/guide/components.html#Assets-Naming-Convention)
 
-## filters
+### filters
 
 - **자료형:** `Object`
 
@@ -791,7 +791,7 @@ type: api
   - [사용자 정의 필터](/guide/custom-filter.html)
   - [에셋 명명 규칙](/guide/components.html#Assets-Naming-Convention)
 
-## components
+### components
 
 - **자료형:** `Object`
 
@@ -803,7 +803,7 @@ type: api
 
   - [컴포넌트](/guide/components.html)
 
-## transitions
+### transitions
 
 - **자료형:** `Object`
 
@@ -815,7 +815,7 @@ type: api
 
   - [트랜지션](/guide/transitions.html)
 
-## partials
+### partials
 
 - **자료형:** `Object`
 
@@ -827,9 +827,9 @@ type: api
 
   - [Special Elements - partial](#partial)
 
-# 옵션 / 기타
+## 옵션 / 기타
 
-## parent
+### parent
 
 - **자료형:** `Vue instance`
 
@@ -839,7 +839,7 @@ type: api
 
 - **참고하세요:** [부모 자식간 통신](/guide/components.html#Parent-Child-Communication)
 
-## events
+### events
 
 - **자료형:** `Object`
 
@@ -876,7 +876,7 @@ type: api
   - [인스턴스 메소드 - 이벤트](#Instance-Methods-Events)
   - [부모-자식간 통신](/guide/components.html#Parent-Child-Communication)
 
-## mixins
+### mixins
 
 - **자료형:** `Array`
 
@@ -902,7 +902,7 @@ type: api
 
 - **참고하세요:** [믹스인](/guide/mixins.html)
 
-## name
+### name
 
 - **자료형:** `String`
 
@@ -933,7 +933,7 @@ type: api
   console.log(vm) // -> StackOverflow {$el: null, ...}
   ```
 
-## extends
+### extends
 
 > 1.0.22+
 
@@ -957,9 +957,9 @@ type: api
   }
   ```
 
-# 인스턴스 속성
+## 인스턴스 속성
 
-## vm.$data
+### vm.$data
 
 - **자료형:** `Object`
 
@@ -967,7 +967,7 @@ type: api
 
   Vue 인스턴스가 감시하고있는 데이터 객체. 새로운 객체로 변경할 수 있습니다. Vue 인스턴스 프록시는 데이터객체의 속성에 액세스합니다.
 
-## vm.$el
+### vm.$el
 
 - **자료형:** `HTMLElement`
 
@@ -977,7 +977,7 @@ type: api
 
   Vue 인스턴스가 관리하는 DOM 요소. 이것은 [인스턴스 파편화](/guide/components.html#Fragment-Instance)가 되므로 주의가 필요하며 `vm.$el`은 파편화 시작 위치를 나타내는 앵커 노드를 반환합니다.
 
-## vm.$options
+### vm.$options
 
 - **자료형:** `Object`
 
@@ -996,7 +996,7 @@ type: api
   })
   ```
 
-## vm.$parent
+### vm.$parent
 
 - **자료형:** `Vue instance`
 
@@ -1006,7 +1006,7 @@ type: api
 
   현재 인스턴스가 하나있는 경우 부모의 인스턴스.
 
-## vm.$root
+### vm.$root
 
 - **자료형:** `Vue instance`
 
@@ -1016,7 +1016,7 @@ type: api
 
   현재의 컴포넌트 트리의 root Vue 인스턴스. 현재 인스턴스가 부모가 아닌 경우, 이 값은 그 자기 자신입니다.
 
-## vm.$children
+### vm.$children
 
 - **자료형:** `Array<Vue instance>`
 
@@ -1026,7 +1026,7 @@ type: api
 
   현재 인스턴스의 직접적인 자식 컴포넌트.
 
-## vm.$refs
+### vm.$refs
 
 - **자료형:** `Object`
 
@@ -1041,7 +1041,7 @@ type: api
   - [자식 컴포넌트 참조](/guide/components.html#Child-Component-Refs)
   - [v-ref](#v-ref).
 
-## vm.$els
+### vm.$els
 
 - **자료형:** `Object`
 
@@ -1053,9 +1053,9 @@ type: api
 
 - **참고하세요:** [v-el](#v-el).
 
-# 인스턴스 메소드 / 데이터
+## 인스턴스 메소드 / 데이터
 
-## vm.$watch( expOrFn, callback, [options] )
+### vm.$watch( expOrFn, callback, [options] )
 
 - **전달인자:**
 
@@ -1129,7 +1129,7 @@ type: api
   // 현재 `a` 값 콜백이 즉시 호출됩니다
   ```
 
-## vm.$get( expression )
+### vm.$get( expression )
 
 - **전달인자:**
 
@@ -1153,7 +1153,7 @@ type: api
   vm.$get('a.b + 1') // -> 2
   ```
 
-## vm.$set( keypath, value )
+### vm.$set( keypath, value )
 
 - **전달인자:**
 
@@ -1192,7 +1192,7 @@ type: api
 
 - **참고하세요:** [반응성에 대해 깊이 알기](/guide/reactivity.html)
 
-## vm.$delete( key )
+### vm.$delete( key )
 
 - **전달인자:**
 
@@ -1202,7 +1202,7 @@ type: api
 
   Vue 인스턴스 (그리고, 그 `$data`)의 루트 레벨의 속성을 삭제합니다. digest cycle을 강제합니다. 추천하지 않습니다.
 
-## vm.$eval( expression )
+### vm.$eval( expression )
 
 - **전달인자:**
 
@@ -1219,7 +1219,7 @@ type: api
   vm.$eval('msg | uppercase') // -> 'HELLO'
   ```
 
-## vm.$interpolate( templateString )
+### vm.$interpolate( templateString )
 
 - **전달인자:**
 
@@ -1236,7 +1236,7 @@ type: api
   vm.$interpolate('{{msg}} world!') // -> 'hello world!'
   ```
 
-## vm.$log( [keypath] )
+### vm.$log( [keypath] )
 
 - **전달인자:**
 
@@ -1251,9 +1251,9 @@ type: api
   vm.$log('item') // logs vm.item
   ```
 
-# 인스턴스 메소드 / 이벤트
+## 인스턴스 메소드 / 이벤트
 
-## vm.$on( event, callback )
+### vm.$on( event, callback )
 
 - **전달인자:**
 
@@ -1274,7 +1274,7 @@ type: api
   // -> "hi"
   ```
 
-## vm.$once( event, callback )
+### vm.$once( event, callback )
 
 - **전달인자:**
 
@@ -1285,7 +1285,7 @@ type: api
 
   한번만 사용 가능한 이벤트 리스너를 제공합니다. 리스너는 한번 실행하면 삭제됩니다.
 
-## vm.$off( [event, callback] )
+### vm.$off( [event, callback] )
 
 - **전달인자:**
 
@@ -1302,7 +1302,7 @@ type: api
 
   - 이벤트와 콜백이 전달되면 해당 콜백에 대한 리스너만 제거됩니다.
 
-## vm.$emit( event, [...args] )
+### vm.$emit( event, [...args] )
 
 - **전달인자:**
 
@@ -1311,7 +1311,7 @@ type: api
 
   현재 인스턴스에 대한 이벤트 트리거입니다. 추가적인 전달인자를 리스너의 콜백에 전달할 수 있습니다.
 
-## vm.$dispatch( event, [...args] )
+### vm.$dispatch( event, [...args] )
 
 - **전달인자:**
 
@@ -1349,7 +1349,7 @@ type: api
 
 - **참고하세요:** [부모-자식간 통신](/guide/components.html#Parent-Child-Communication)
 
-## vm.$broadcast( event, [...args] )
+### vm.$broadcast( event, [...args] )
 
 - **전달인자:**
 
@@ -1386,9 +1386,9 @@ type: api
   // child3는 출력되지 않습니다, child2가 true를 반환하지 않았습니다.
   ```
 
-# 인스턴스 메소드 / DOM
+## 인스턴스 메소드 / DOM
 
-## vm.$appendTo( elementOrSelector, [callback] )
+### vm.$appendTo( elementOrSelector, [callback] )
 
 - **전달인자:**
 
@@ -1401,7 +1401,7 @@ type: api
 
   요소를 대상으로 Vue는 인스턴스의 DOM 엘리먼트 또는 파편을 추가합니다. 대상은 엘리먼트 또는 querySelector 문자열이 될 수 있습니다. 존재하는 경우 이 방법은 트랜지션을 트리거합니다. 트랜지션이(또는 어떠한 즉시 트랜지션이 발생되지 않은 경우) 완료된 후 콜백 호출합니다.
 
-## vm.$before( elementOrSelector, [callback] )
+### vm.$before( elementOrSelector, [callback] )
 
 - **전달인자:**
 
@@ -1414,7 +1414,7 @@ type: api
 
   Vue 인스턴스의 DOM 엘리먼트 또는 파편을 대상 엘리먼트 이전에 삽입합니다. 대상 엘리먼트 또는 querySelector 문자열을 지정할 수 있습니다. 이 메서드는 표시되어있는 경우 트랜지션을 시작합니다. 트랜지션이 완료된 후 (또는 트랜지션이 트리거되지 않은 경우에는 즉시) 콜백 호출합니다.
 
-## vm.$after( elementOrSelector, [callback] )
+### vm.$after( elementOrSelector, [callback] )
 
 - **전달인자:**
 
@@ -1427,7 +1427,7 @@ type: api
 
   Vue 인스턴스의 DOM 엘리먼트 또는 파편을 대상 엘리먼트의 뒤에 삽입합니다. 대상 엘리먼트 또는 querySelector 문자열을 지정할 수 있습니다. 이 메서드는 표시되어있는 경우 트랜지션을 시작합니다. 트랜지션이 완료된 후 (또는 트랜지션이 트리거되지 않은 경우에는 즉시) 콜백 호출합니다.
 
-## vm.$remove( [callback] )
+### vm.$remove( [callback] )
 
 - **전달인자:**
 
@@ -1439,7 +1439,7 @@ type: api
 
   Vue 인스턴스의 DOM 엘리먼트 또는 파편을 DOM에서 삭제합니다. 이 메서드는 표시되어있는 경우 트랜지션을 시작합니다. 트랜지션이 완료된 후 (또는 트랜지션이 트리거되지 않은 경우에는 즉시) 콜백 호출합니다.
 
-## vm.$nextTick( callback )
+### vm.$nextTick( callback )
 
 - **전달인자:**
 
@@ -1475,9 +1475,9 @@ type: api
   - [Vue.nextTick](#Vue-nextTick)
   - [비동기 업데이트 큐](/guide/reactivity.html#Async-Update-Queue)
 
-# 인스턴스 메소드 / 라이프사이클
+## 인스턴스 메소드 / 라이프사이클
 
-## vm.$mount( [elementOrSelector] )
+### vm.$mount( [elementOrSelector] )
 
 - **전달인자:**
 
@@ -1512,7 +1512,7 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-## vm.$destroy( [remove] )
+### vm.$destroy( [remove] )
 
 - **전달인자:**
 
@@ -1526,9 +1526,9 @@ type: api
 
 - **참고하세요:** [라이프사이클 다이어그램](/guide/instance.html#Lifecycle-Diagram)
 
-# 지시어
+## 지시어
 
-## v-text
+### v-text
 
 - **요구조건** `String`
 
@@ -1546,7 +1546,7 @@ type: api
   <span>{{msg}}</span>
   ```
 
-## v-html
+### v-html
 
 - **요구조건** `String`
 
@@ -1566,7 +1566,7 @@ type: api
   <div>{{{html}}}</div>
   ```
 
-## v-if
+### v-if
 
 - **요구조건** `*`
 
@@ -1576,7 +1576,7 @@ type: api
 
 - **참고하세요:** [조건부 렌더링](/guide/conditional.html)
 
-## v-show
+### v-show
 
 - **요구조건** `*`
 
@@ -1586,7 +1586,7 @@ type: api
 
 - **참고하세요:** [조건부 렌더링 - v-show](/guide/conditional.html#v-show)
 
-## v-else
+### v-else
 
 - **요구조건이 없습니다**
 
@@ -1609,7 +1609,7 @@ type: api
 
 - **참고하세요:** [조건부 렌더링 - Component caveat](/guide/conditional.html#Component-caveat)
 
-## v-for
+### v-for
 
 - **요구조건** `Array | Object | Number | String`
 
@@ -1643,7 +1643,7 @@ type: api
 
 - **참고하세요:** [리스트 렌더링](/guide/list.html).
 
-## v-on
+### v-on
 
 - **짧게쓰기:** `@`
 
@@ -1712,7 +1712,7 @@ type: api
 
 - **참고하세요:** [메소드와 이벤트 핸들링](/guide/events.html)
 
-## v-bind
+### v-bind
 
 - **짧게쓰기:** `:`
 
@@ -1772,7 +1772,7 @@ type: api
   - [클래스와 스타일 바인딩](/guide/class-and-style.html)
   - [컴포넌트 Props](/guide/components.html#Props)
 
-## v-model
+### v-model
 
 - **요구조건** input type에 따라 변화합니다.
 
@@ -1794,7 +1794,7 @@ type: api
 
 - **참고하세요:** [폼 입력 바인딩](/guide/forms.html)
 
-## v-ref
+### v-ref
 
 - **요구조건이 없습니다**
 
@@ -1838,7 +1838,7 @@ type: api
 
 - **참고하세요:** [자식 컴포넌트 참조](/guide/components.html#Child-Component-Refs)
 
-## v-el
+### v-el
 
 - **요구조건이 없습니다**
 
@@ -1864,7 +1864,7 @@ type: api
   this.$els.otherMsg.textContent // -> "world"
   ```
 
-## v-pre
+### v-pre
 
 - **요구조건이 없습니다**
 
@@ -1878,7 +1878,7 @@ type: api
   <span v-pre>{{ this will not be compiled }}</span>
   ```
 
-## v-cloak
+### v-cloak
 
 - **요구조건이 없습니다**
 
@@ -1902,9 +1902,9 @@ type: api
 
   `<div>` 컴파일이 끝날 때까지 보이지 않게됩니다.
 
-# Special Elements
+## Special Elements
 
-## component
+### component
 
 - **속성:**
 
@@ -1926,7 +1926,7 @@ type: api
 
 - **참고하세요:** [동적 컴포넌트](/guide/components.html#Dynamic-Components)
 
-## slot
+### slot
 
 - **속성:**
 
@@ -1942,7 +1942,7 @@ type: api
 
 - **참고하세요:** [Slot과 컨텐츠 배포](/guide/components.html#Content-Distribution-with-Slots)
 
-## partial
+### partial
 
 - **속성:**
 
@@ -1971,9 +1971,9 @@ type: api
   <partial :name="partialId"></partial>
   ```
 
-# 필터
+## 필터
 
-## capitalize
+### capitalize
 
 - **예제**
 
@@ -1983,7 +1983,7 @@ type: api
 
   _'abc' => 'Abc'_
 
-## uppercase
+### uppercase
 
 - **예제**
 
@@ -1993,7 +1993,7 @@ type: api
 
   _'abc' => 'ABC'_
 
-## lowercase
+### lowercase
 
 - **예제**
 
@@ -2003,7 +2003,7 @@ type: api
 
   _'ABC' => 'abc'_
 
-## currency
+### currency
 
 - **전달인자:**
 
@@ -2034,7 +2034,7 @@ type: api
 
   _12345 => ₫12,345_
 
-## pluralize
+### pluralize
 
 - **전달인자:**
 
@@ -2060,7 +2060,7 @@ type: api
 
   _1 => '1st'_ _2 => '2nd'_ _3 => '3rd'_ _4 => '4th'_ _5 => '5th'_
 
-## json
+### json
 
 - **전달인자:**
 
@@ -2077,7 +2077,7 @@ type: api
   <pre>{{ nestedObject | json 4 }}</pre>
   ```
 
-## debounce
+### debounce
 
 - **제한됨:** Function 값을 요구하는 지시어. 예를 들면 `v-on`.
 
@@ -2095,7 +2095,7 @@ type: api
   <input @keyup="onKeyup | debounce 500">
   ```
 
-## limitBy
+### limitBy
 
 - **제한됨:** `Array`를 요구하는 지시문. 예를 들면 `v-for`.
 
@@ -2116,7 +2116,7 @@ type: api
   <div v-for="item in items | limitBy 10 5"></div>
   ```
 
-## filterBy
+### filterBy
 
 - **제한됨:** `Array`를 요구하는 지시문. 예를 들면 `v-for`.
 
@@ -2221,7 +2221,7 @@ type: api
   <div v-for="user in users | filterBy myCustomFilterFunction">
   ```
 
-## orderBy
+### orderBy
 
 - **제한됨:** `Array`를 요구하는 지시문. 예를 들면 `v-for`.
 
@@ -2412,11 +2412,11 @@ type: api
 
 {% endraw %}
 
-# 배열 확장 메소드
+## 배열 확장 메소드
 
 Vue.js는  `Array.prototype`을 두개의 추가 메소드를 이용하여 일반적인 배열 사용시 반응형 업데이트를 지원합니다.
 
-## array.$set(index, value)
+### array.$set(index, value)
 
 - **전달인자:**
 
@@ -2433,7 +2433,7 @@ Vue.js는  `Array.prototype`을 두개의 추가 메소드를 이용하여 일�
 
 - **참고하세요:** [주의 사항](/guide/list.html#Caveats)
 
-## array.$remove(reference)
+### array.$remove(reference)
 
 - **전달인자:**
 
