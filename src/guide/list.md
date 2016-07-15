@@ -56,7 +56,6 @@ var example1 = new Vue({
 </script>
 {% endraw %}
 
-Inside `v-for` blocks we have full access to parent scope properties, plus a special variable `$index` which, as you probably have guessed, is the Array index for the current item:
 `v-for` 블록은 부모 범위에 대한 속성에 완전히 접근할 수 있습니다. 아마 이미 예상하듯 현재 항목에 대한 배열의 인덱스인 특별한 변수 `$index`를 가지고 있습니다:
 
 ``` html
@@ -195,7 +194,6 @@ example1.items = example1.items.filter(function (item) {
 
 ### 주의 사항
 
-Due to limitations of JavaScript, Vue.js **cannot** detect the following changes to an Array:
 JavaScript의 한계로 인해 Vue.js은 배열에서 다음의 변경을 **감지 할 수 없습니다**:
 
 1. 인덱스를 이용해서 항목을 직접 설정할 때. 예 : `vm.items [0] = {}`
@@ -232,7 +230,6 @@ this.items.$remove(item)
 
 ## 객체와 v-for
 
-You can also use `v-for` to iterate through the properties of an Object. In addition to `$index`, each scope will have access to another special property `$key`.
 객체의 속성에 `v-for`를 사용하여 순회할 수 있습니다. `$index` 이외에 각각의 범위는 `$key`로 접근할 수 있습니다.
 
 ``` html
@@ -286,7 +283,6 @@ new Vue({
 </div>
 ```
 
-<p class="tip">When iterating over an Object, the order is based on the key enumeration order of `Object.keys()`, which is **not** guaranteed to be consistent in all JavaScript engine implementations.</p>
 <p class="tip">객체를 순회할 때 순서는 `Object.keys()`내부의 키를 기반으로하며 모든 JavaScript엔진의 구현에서 일관성이 보장되지 않습니다.</p>
 
 ## 범위 v-for
