@@ -6,11 +6,7 @@ order: 10
 
 ## 기본 사용 방법
 
-<<<<<<< HEAD
 form의 input 요소에서 양방향(two-way) 데이터 바인딩을 만드려면 `v-model` 지시어를 사용할 수 있습니다. 자동으로 입력 된 데이터의 유형에 따라 요소를 업데이트합니다. 약간의 마법같기는 하지만, `v-model`은 본질적으로 사용자 입력 이벤트에서 데이터를 업데이트 하기 위한 신택스슈가(syntax sugar)이지만 일부 케이스에서 특별한 주의가 필요합니다.
-=======
-You can use the `v-model` directive to create two-way data bindings on form input and textarea elements. It automatically picks the correct way to update the element based on the input type. Although a bit magical, `v-model` is essentially syntax sugar for updating data on user input events, plus special care for some edge cases.
->>>>>>> vuejs/master
 
 ### Text
 
