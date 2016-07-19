@@ -153,11 +153,11 @@ type: api
   callback을 연기하고 DOM의 업데이트 주기를 마친에 실행합니다. DOM 업데이트를 하려면 몇 가지 데이터를 변경 한 직후에 사용하십시오.
 
   ```javascript
-    // modify data
+    // 데이터 수정
     vm.msg = 'Hello'
-    // DOM not updated yet
+    // DOM은 아직 갱신되지 않습니다.
     Vue.nextTick(function () {
-      // DOM updated
+      // DOM이 업데이트 됩니다.
     })
   ```
 
@@ -175,7 +175,7 @@ type: api
 
 - **사용방법:**
 
-  객체의 속성을 설정합니다. 오브젝트가 반응형이면 속성이 반응형 속성으로 생성되는 것을 보장하고 View 업데이트를 트리거합니다. 이것은 주로 Vue이 속성 추가를 감지 할 수 없다는 제약을 피하기 위해 사용됩니다.
+  객체의 속성을 설정합니다. 오브젝트가 반응형이면 속성이 반응형 속성으로 생성되는 것을 보장하고 View 업데이트를 트리거합니다. 이것은 주로 Vue이 속성 추가를 알아챌 수 없는 제약을 피하기 위해 사용됩니다.
 
 - **참고하세요:** [반응성에 대해 깊이 알기](/guide/reactivity.html)
 
@@ -204,7 +204,7 @@ type: api
   전역 지시어를 검색하거나 등록합니다.
 
   ```javascript
-  // register
+  // 등록
   Vue.directive('my-directive', {
     bind: function () {},
     update: function () {},
