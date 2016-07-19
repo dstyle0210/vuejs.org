@@ -20,7 +20,7 @@ var MyComponent = Vue.extend({
 })
 ```
 
-이 생성자를 컴포넌트로 **등록**하기 위해서는 `Vue.component(tag, constructor)`를 사용합니다:
+이 생성자를 컴포넌트로 **등록**하려면 `Vue.component(tag, constructor)`를 사용합니다:
 
 ``` js
 // 전역으로 my-component 태그로 컴포넌트를 등록 하는 방법
@@ -526,7 +526,7 @@ var parent = new Vue({
 
 ### 자식 컴포넌트 참조
 
-props이나 이벤트의 존재에도 불구하고, 때로는 자식 컴포넌트의 JavaScript에서 직접 액세스 할 필요가 있습니다. 이를 위해서는 `v-ref`를 사용하여 하위 컴포넌트에 대한 참조 ID를 할당해야합니다. 예를 들면:
+props이나 이벤트의 존재에도 불구하고, 때로는 자식 컴포넌트의 JavaScript에서 직접 액세스 할 필요가 있습니다. `v-ref`를 사용하여 하위 컴포넌트에 대한 참조 ID를 할당해서 해결합니다. 예를 들면:
 
 ``` html
 <div id="parent">
@@ -855,7 +855,7 @@ Vue.component('async-example', function (resolve, reject) {
 })
 ```
 
-팩토리 함수는 서버에서 컴포넌트 정의를 취득한 후에 불리는 `resolve` 콜백을 받습니다. 불러오기가 실패한 것을 나타 내기 위해서 `reject (reason)`를 호출 할 수 있습니다. 여기에서 `setTimeout`은 단순히 예제를 위한 것입니다. 어떻게 컴포넌트를 얻는 것은 모두 작성자에게 달려 있습니다. 권장하는 방법 중 하나는 [Webpack 코드 분할 기능](http://webpack.github.io/docs/code-splitting.html)에서 비동기 컴포넌트를 사용하는 것이다.
+팩토리 함수는 서버에서 컴포넌트 정의를 취득한 후에 불리는 `resolve` 콜백을 받습니다. 불러오기가 실패한 것을 나타 내려면 `reject (reason)`를 호출 할 수 있습니다. 여기에서 `setTimeout`은 단순히 예제를 위한 것입니다. 어떻게 컴포넌트를 얻는 것은 모두 작성자에게 달려 있습니다. 권장하는 방법 중 하나는 [Webpack 코드 분할 기능](http://webpack.github.io/docs/code-splitting.html)에서 비동기 컴포넌트를 사용하는 것이다.
 
 ``` js
 Vue.component('async-webpack-example', function (resolve) {

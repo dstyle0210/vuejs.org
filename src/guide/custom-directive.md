@@ -214,7 +214,7 @@ Vue.directive('example', {
 })
 ```
 
-<p class="tip">지시어 params는 JavaScript 및 HTML에서 동일 camelCase <=> kebab-case 매핑됩니다. props또한 같습니다. 예를 들어, 템플릿에서 `disable-effect`로 param을 사용하기 위해서는, JavaScript로 `disableEffect`으로 그것에 접근해야합니다.</p>
+<p class="tip">지시어 params는 JavaScript 및 HTML에서 동일 camelCase <=> kebab-case 매핑됩니다. props또한 같습니다. 예를 들어, 템플릿에서 `disable-effect`로 param을 사용하려면, JavaScript로 `disableEffect`으로 그것에 접근해야합니다.</p>
 
 
 ### deep

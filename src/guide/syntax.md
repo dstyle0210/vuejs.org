@@ -26,7 +26,7 @@ Mustache 태그는 해당 데이터 개체의 `msg` 속성 값으로 대체됩�
 
 ### 원시 HTML
 
-이중 중괄호 Mustache는 HTML이 아닌 일반 텍스트로 데이터를 해석합니다. 원시 HTML을 출력하기 위해서는 3배 중괄호 mustache을 사용해야합니다:
+이중 중괄호 Mustache는 HTML이 아닌 일반 텍스트로 데이터를 해석합니다. 원시 HTML을 출력하려면 3배 중괄호 mustache을 사용해야합니다:
 
 ``` html
 <div>{{{ raw_html }}}</div>
