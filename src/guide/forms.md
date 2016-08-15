@@ -18,15 +18,15 @@ form의 input 요소에서 양방향(two-way) 데이터 바인딩을 만드려�
 
 {% raw %}
 <div id="example-1" class="demo">
-  <span>Message is: {{ message }}</span><br>
-  <input type="text" v-model="message" placeholder="edit me">
+	<span>Message is: {{ message }}</span><br>
+	<input type="text" v-model="message" placeholder="edit me">
 </div>
 <script>
 new Vue({
-  el: '#example-1',
-  data: {
-    message: ''
-  }
+	el: '#example-1',
+	data: {
+		message: ''
+	}
 })
 </script>
 {% endraw %}
@@ -42,16 +42,16 @@ new Vue({
 
 {% raw %}
 <div id="example-textarea" class="demo">
-  <span>Message is:</span>
-  <p style="white-space: pre">{{ message }}</p><br>
-  <textarea v-model="message" placeholder="add multiple lines"></textarea>
+	<span>Message is:</span>
+	<p style="white-space: pre">{{ message }}</p><br>
+	<textarea v-model="message" placeholder="add multiple lines"></textarea>
 </div>
 <script>
 new Vue({
-  el: '#example-textarea',
-  data: {
-    message: ''
-  }
+	el: '#example-textarea',
+	data: {
+		message: ''
+	}
 })
 </script>
 {% endraw %}
@@ -66,15 +66,15 @@ new Vue({
 ```
 {% raw %}
 <div id="example-2" class="demo">
-  <input type="checkbox" id="checkbox" v-model="checked">
-  <label for="checkbox">{{ checked }}</label>
+	<input type="checkbox" id="checkbox" v-model="checked">
+	<label for="checkbox">{{ checked }}</label>
 </div>
 <script>
 new Vue({
-  el: '#example-2',
-  data: {
-    checked: false
-  }
+	el: '#example-2',
+	data: {
+		checked: false
+	}
 })
 </script>
 {% endraw %}
@@ -94,30 +94,30 @@ new Vue({
 
 ``` js
 new Vue({
-  el: '...',
-  data: {
-    checkedNames: []
-  }
+	el: '...',
+	data: {
+		checkedNames: []
+	}
 })
 ```
 
 {% raw %}
 <div id="example-3" class="demo">
-  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
-  <label for="jack">Jack</label>
-  <input type="checkbox" id="john" value="John" v-model="checkedNames">
-  <label for="john">John</label>
-  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
-  <label for="mike">Mike</label>
-  <br>
-  <span>Checked names: {{ checkedNames | json }}</span>
+	<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+	<label for="jack">Jack</label>
+	<input type="checkbox" id="john" value="John" v-model="checkedNames">
+	<label for="john">John</label>
+	<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+	<label for="mike">Mike</label>
+	<br>
+	<span>Checked names: {{ checkedNames | json }}</span>
 </div>
 <script>
 new Vue({
-  el: '#example-3',
-  data: {
-    checkedNames: []
-  }
+	el: '#example-3',
+	data: {
+		checkedNames: []
+	}
 })
 </script>
 {% endraw %}
@@ -136,20 +136,20 @@ new Vue({
 ```
 {% raw %}
 <div id="example-4" class="demo">
-  <input type="radio" id="one" value="One" v-model="picked">
-  <label for="one">One</label>
-  <br>
-  <input type="radio" id="two" value="Two" v-model="picked">
-  <label for="two">Two</label>
-  <br>
-  <span>Picked: {{ picked }}</span>
+	<input type="radio" id="one" value="One" v-model="picked">
+	<label for="one">One</label>
+	<br>
+	<input type="radio" id="two" value="Two" v-model="picked">
+	<label for="two">Two</label>
+	<br>
+	<span>Picked: {{ picked }}</span>
 </div>
 <script>
 new Vue({
-  el: '#example-4',
-  data: {
-    picked: ''
-  }
+	el: '#example-4',
+	data: {
+		picked: ''
+	}
 })
 </script>
 {% endraw %}
@@ -160,27 +160,27 @@ new Vue({
 
 ``` html
 <select v-model="selected">
-  <option selected>A</option>
-  <option>B</option>
-  <option>C</option>
+	<option selected>A</option>
+	<option>B</option>
+	<option>C</option>
 </select>
 <span>Selected: {{ selected }}</span>
 ```
 {% raw %}
 <div id="example-5" class="demo">
-  <select v-model="selected">
-    <option selected>A</option>
-    <option>B</option>
-    <option>C</option>
-  </select>
-  <span>Selected: {{ selected }}</span>
+	<select v-model="selected">
+		<option selected>A</option>
+		<option>B</option>
+		<option>C</option>
+	</select>
+	<span>Selected: {{ selected }}</span>
 </div>
 <script>
 new Vue({
-  el: '#example-5',
-  data: {
-    selected: null
-  }
+	el: '#example-5',
+	data: {
+		selected: null
+	}
 })
 </script>
 {% endraw %}
@@ -189,29 +189,29 @@ new Vue({
 
 ``` html
 <select v-model="selected" multiple>
-  <option selected>A</option>
-  <option>B</option>
-  <option>C</option>
+	<option selected>A</option>
+	<option>B</option>
+	<option>C</option>
 </select>
 <br>
 <span>Selected: {{ selected | json }}</span>
 ```
 {% raw %}
 <div id="example-6" class="demo">
-  <select v-model="selected" multiple style="width: 50px">
-    <option selected>A</option>
-    <option>B</option>
-    <option>C</option>
-  </select>
-  <br>
-  <span>Selected: {{ selected | json }}</span>
+	<select v-model="selected" multiple style="width: 50px">
+		<option selected>A</option>
+		<option>B</option>
+		<option>C</option>
+	</select>
+	<br>
+	<span>Selected: {{ selected | json }}</span>
 </div>
 <script>
 new Vue({
-  el: '#example-6',
-  data: {
-    selected: []
-  }
+	el: '#example-6',
+	data: {
+		selected: []
+	}
 })
 </script>
 {% endraw %}
@@ -220,45 +220,45 @@ new Vue({
 
 ``` html
 <select v-model="selected">
-  <option v-for="option in options" v-bind:value="option.value">
-    {{ option.text }}
-  </option>
+	<option v-for="option in options" v-bind:value="option.value">
+		{{ option.text }}
+	</option>
 </select>
 <span>Selected: {{ selected }}</span>
 ```
 ``` js
 new Vue({
-  el: '...',
-  data: {
-    selected: 'A',
-    options: [
-      { text: 'One', value: 'A' },
-      { text: 'Two', value: 'B' },
-      { text: 'Three', value: 'C' }
-    ]
-  }
+	el: '...',
+	data: {
+		selected: 'A',
+		options: [
+			{ text: 'One', value: 'A' },
+			{ text: 'Two', value: 'B' },
+			{ text: 'Three', value: 'C' }
+		]
+	}
 })
 ```
 {% raw %}
 <div id="example-7" class="demo">
-  <select v-model="selected">
-    <option v-for="option in options" v-bind:value="option.value">
-      {{ option.text }}
-    </option>
-  </select>
-  <span>Selected: {{ selected }}</span>
+	<select v-model="selected">
+		<option v-for="option in options" v-bind:value="option.value">
+			{{ option.text }}
+		</option>
+	</select>
+	<span>Selected: {{ selected }}</span>
 </div>
 <script>
 new Vue({
-  el: '#example-7',
-  data: {
-    selected: 'A',
-    options: [
-      { text: 'One', value: 'A' },
-      { text: 'Two', value: 'B' },
-      { text: 'Three', value: 'C' }
-    ]
-  }
+	el: '#example-7',
+	data: {
+		selected: 'A',
+		options: [
+			{ text: 'One', value: 'A' },
+			{ text: 'Two', value: 'B' },
+			{ text: 'Three', value: 'C' }
+		]
+	}
 })
 </script>
 {% endraw %}
@@ -276,7 +276,7 @@ radio, checkbox, 그리고 select 옵션의 `v-model` 바인딩 값은 일반적
 
 <!-- "abc"를 선택하는 경우 `selected`가 선택 값이 됩니다. -->
 <select v-model="selected">
-  <option value="abc">ABC</option>
+	<option value="abc">ABC</option>
 </select>
 ```
 
@@ -286,10 +286,10 @@ radio, checkbox, 그리고 select 옵션의 `v-model` 바인딩 값은 일반적
 
 ``` html
 <input
-  type="checkbox"
-  v-model="toggle"
-  v-bind:true-value="a"
-  v-bind:false-value="b">
+	type="checkbox"
+	v-model="toggle"
+	v-bind:true-value="a"
+	v-bind:false-value="b">
 ```
 
 ``` js
@@ -314,8 +314,8 @@ vm.pick === vm.a
 
 ``` html
 <select v-model="selected">
-  <!-- 인라인 객체 리터럴 -->
-  <option v-bind:value="{ number: 123 }">123</option>
+	<!-- 인라인 객체 리터럴 -->
+	<option v-bind:value="{ number: 123 }">123</option>
 </select>
 ```
 
@@ -353,13 +353,13 @@ vm.selected.number // -> 123
 ```
  {% raw %}
 <div id="debounce-demo" class="demo">
-  {{ msg }}<br>
-  <input v-model="msg" debounce="500">
+	{{ msg }}<br>
+	<input v-model="msg" debounce="500">
 </div>
 <script>
 new Vue({
-  el:'#debounce-demo',
-  data: { msg: 'edit me' }
+	el:'#debounce-demo',
+	data: { msg: 'edit me' }
 })
 </script>
 {% endraw %}
